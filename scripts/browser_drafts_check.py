@@ -118,9 +118,10 @@ with tempfile.TemporaryDirectory() as tmp:
             page.locator('[data-field="end"]').fill("2026-12-31")
             page.locator('[data-field="weight"]').fill("100")
             page.get_by_role("button", name="전체 선택 / 해제").click()
-            page.locator('[data-field="github_urls"]').fill(
+            page.locator('[data-source-entry="github_urls"]').fill(
                 sample["projects"][0]["github_urls"][0]
             )
+            page.locator('[data-action="add-source"][data-key="github_urls"]').click()
             page.get_by_role("button", name="초안 저장").click()
             expect(
                 page.get_by_role("heading", name="초안 보완 브라우저 검증")

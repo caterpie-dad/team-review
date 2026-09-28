@@ -1,0 +1,18 @@
+{
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "mode": "isolated synthetic HTTP services",
+  "checks": [
+    "add source by button and Enter",
+    "existing/multiple URLs listed",
+    "remove/duplicate/invalid URL handling",
+    "unadded URL guard and retention",
+    "save/reload source arrays",
+    "mobile layout",
+    "all repositories and Confluence roots collected",
+    "progress changes without replacing layout/bar/spinner or losing focus/scroll/details",
+    "overview updates without replacing layout",
+    "late poll cannot overwrite navigation",
+    "completion opens results"
+  ]
+}

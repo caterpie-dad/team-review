@@ -1110,6 +1110,19 @@ dialog pre {
   overflow-wrap: anywhere;
   min-width: 0;
 }
+.source-control {
+  min-width: 0;
+}
+.source-list {
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.source-list .identity-tag {
+  justify-content: space-between;
+}
+.source-list button {
+  flex-shrink: 0;
+}
 
 .criterion-edit {
   padding: 18px 0;

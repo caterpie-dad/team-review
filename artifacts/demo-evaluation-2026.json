@@ -123,13 +123,13 @@
       ]
     }
   ],
-  "id": "c24268db-7683-417f-ade0-9ae45bf804af",
+  "id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
   "status": "completed",
-  "created_at": "2026-09-27T08:58:39.949787+00:00",
+  "created_at": "2026-09-28T07:53:58.699726+00:00",
   "revision": 112,
   "progress": 100,
   "demo": true,
-  "updated_at": "2026-09-27T08:58:41.990591+00:00",
+  "updated_at": "2026-09-28T07:54:00.743069+00:00",
   "analysis_policy": {
     "github_strategy": "adaptive",
     "min_consecutive_commits": 4,
@@ -219,7 +219,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.667219+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.467396+00:00",
       "project_id": "project-1",
       "member_id": "T001"
     },
@@ -293,7 +293,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.692842+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.493577+00:00",
       "project_id": "project-1",
       "member_id": "T002"
     },
@@ -367,7 +367,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.722126+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.522586+00:00",
       "project_id": "project-1",
       "member_id": "T003"
     },
@@ -441,7 +441,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.748262+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.550279+00:00",
       "project_id": "project-1",
       "member_id": "T004"
     },
@@ -515,7 +515,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.773408+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.579554+00:00",
       "project_id": "project-1",
       "member_id": "T005"
     },
@@ -589,7 +589,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.801073+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.608880+00:00",
       "project_id": "project-2",
       "member_id": "T003"
     },
@@ -663,7 +663,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.830834+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.638305+00:00",
       "project_id": "project-2",
       "member_id": "T004"
     },
@@ -737,7 +737,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.857765+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.667520+00:00",
       "project_id": "project-2",
       "member_id": "T005"
     },
@@ -811,7 +811,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.884436+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.698561+00:00",
       "project_id": "project-2",
       "member_id": "T006"
     },
@@ -885,7 +885,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.911107+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.729161+00:00",
       "project_id": "project-2",
       "member_id": "T007"
     },
@@ -959,7 +959,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.941976+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.763005+00:00",
       "project_id": "project-3",
       "member_id": "T005"
     },
@@ -1033,7 +1033,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.968068+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.791485+00:00",
       "project_id": "project-3",
       "member_id": "T006"
     },
@@ -1107,7 +1107,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:40.997471+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.823796+00:00",
       "project_id": "project-3",
       "member_id": "T007"
     },
@@ -1181,7 +1181,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.026517+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.854334+00:00",
       "project_id": "project-3",
       "member_id": "T008"
     },
@@ -1255,7 +1255,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.053171+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.884274+00:00",
       "project_id": "project-3",
       "member_id": "T009"
     },
@@ -1329,7 +1329,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.080453+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.915265+00:00",
       "project_id": "project-4",
       "member_id": "T007"
     },
@@ -1403,7 +1403,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.107862+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.943769+00:00",
       "project_id": "project-4",
       "member_id": "T008"
     },
@@ -1477,7 +1477,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.136177+00:00",
+      "analyzed_at": "2026-09-28T07:53:59.972433+00:00",
       "project_id": "project-4",
       "member_id": "T009"
     },
@@ -1551,7 +1551,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.163950+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.001207+00:00",
       "project_id": "project-4",
       "member_id": "T010"
     },
@@ -1625,7 +1625,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.191665+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.031929+00:00",
       "project_id": "project-4",
       "member_id": "T001"
     },
@@ -1699,7 +1699,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.222218+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.066053+00:00",
       "project_id": "project-5",
       "member_id": "T009"
     },
@@ -1750,7 +1750,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.242918+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.085298+00:00",
       "project_id": "project-5",
       "member_id": "T010"
     },
@@ -1824,7 +1824,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.272868+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.113564+00:00",
       "project_id": "project-5",
       "member_id": "T001"
     },
@@ -1898,7 +1898,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.310096+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.141662+00:00",
       "project_id": "project-5",
       "member_id": "T002"
     },
@@ -1972,7 +1972,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.342244+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.171329+00:00",
       "project_id": "project-5",
       "member_id": "T003"
     },
@@ -2046,7 +2046,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.373269+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.204455+00:00",
       "project_id": "project-6",
       "member_id": "T001"
     },
@@ -2120,7 +2120,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.402496+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.233990+00:00",
       "project_id": "project-6",
       "member_id": "T002"
     },
@@ -2194,7 +2194,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.431722+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.265954+00:00",
       "project_id": "project-6",
       "member_id": "T003"
     },
@@ -2268,7 +2268,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.461871+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.296836+00:00",
       "project_id": "project-6",
       "member_id": "T004"
     },
@@ -2342,7 +2342,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-27T08:58:41.491374+00:00",
+      "analyzed_at": "2026-09-28T07:54:00.327762+00:00",
       "project_id": "project-6",
       "member_id": "T005"
     }
@@ -3703,8 +3703,8 @@
     ],
     "anchors": "0–19 심각한 결함 / 20–39 개선 필요 / 40–59 기본 충족 / 60–79 견고함 / 80–100 탁월함. 관찰 불가=null."
   },
-  "started_at": "2026-09-27T08:58:39.959470+00:00",
-  "finished_at": "2026-09-27T08:58:41.504414+00:00",
+  "started_at": "2026-09-28T07:53:58.710822+00:00",
+  "finished_at": "2026-09-28T07:54:00.340197+00:00",
   "model": "synthetic-judge-v1",
   "level_policy": {
     "version": "1.0",
@@ -4200,8 +4200,8 @@
   "audit": [
     {
       "id": 4,
-      "evaluation_id": "c24268db-7683-417f-ade0-9ae45bf804af",
-      "at": "2026-09-27T08:58:41.991531+00:00",
+      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+      "at": "2026-09-28T07:54:00.743766+00:00",
       "action": "adjustment",
       "data": {
         "member_id": "T001",
@@ -4237,8 +4237,8 @@
     },
     {
       "id": 3,
-      "evaluation_id": "c24268db-7683-417f-ade0-9ae45bf804af",
-      "at": "2026-09-27T08:58:41.505063+00:00",
+      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+      "at": "2026-09-28T07:54:00.340908+00:00",
       "action": "completed",
       "data": {
         "results": 30,
@@ -4248,8 +4248,8 @@
     },
     {
       "id": 2,
-      "evaluation_id": "c24268db-7683-417f-ade0-9ae45bf804af",
-      "at": "2026-09-27T08:58:39.959559+00:00",
+      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+      "at": "2026-09-28T07:53:58.710925+00:00",
       "action": "started",
       "data": {
         "model": "synthetic-judge-v1",
@@ -4259,8 +4259,8 @@
     },
     {
       "id": 1,
-      "evaluation_id": "c24268db-7683-417f-ade0-9ae45bf804af",
-      "at": "2026-09-27T08:58:39.949836+00:00",
+      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+      "at": "2026-09-28T07:53:58.699775+00:00",
       "action": "demo_seeded",
       "data": {
         "members": 10,

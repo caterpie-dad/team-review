@@ -44,19 +44,22 @@ with sync_playwright() as p:
     page.get_by_role("button", name="새 평가 만들기").click()
     page.locator("#eval-title").fill("브라우저 흐름 검증 · 2026")
     page.locator('[data-field="name"]').fill("브라우저 검증 프로젝트")
-    page.locator('[data-field="github_urls"]').fill(
+    page.locator('[data-source-entry="github_urls"]').fill(
         "https://github.demo.test/demo/project-1"
     )
-    page.locator('[data-field="confluence_urls"]').fill(
+    page.locator('[data-action="add-source"][data-key="github_urls"]').click()
+    page.locator('[data-source-entry="confluence_urls"]').fill(
         "https://confluence.demo.test/wiki/spaces/DEMO/pages/1000"
     )
+    page.locator('[data-action="add-source"][data-key="confluence_urls"]').click()
     page.locator('[data-action="toggle-member"]').last.click()
     assert page.locator(".chip.selected").count() == 9
     page.get_by_role("button", name="프로젝트 추가").click()
     page.locator('[data-field="name"]').last.fill("보조 프로젝트")
-    page.locator('[data-field="github_urls"]').last.fill(
+    page.locator('[data-source-entry="github_urls"]').last.fill(
         "https://github.demo.test/demo/project-2"
     )
+    page.locator('[data-action="add-source"][data-key="github_urls"]').last.click()
     page.get_by_role("button", name="가중치 균등 분배").click()
     expect(page.locator("#weight-total")).to_have_text("100.00 / 100")
     slider = page.locator("[data-weight-range]").first

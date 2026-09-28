@@ -16,7 +16,7 @@
           "consolidated_groups": 0,
           "repeat_llm_requests": 0,
           "repeat_cache_hits": 5,
-          "elapsed_seconds_mock_services": 2.432,
+          "elapsed_seconds_mock_services": 2.428,
           "actual_tokens": null
         },
         "adaptive": {
@@ -29,7 +29,7 @@
           "consolidated_groups": 2,
           "repeat_llm_requests": 0,
           "repeat_cache_hits": 1,
-          "elapsed_seconds_mock_services": 2.29,
+          "elapsed_seconds_mock_services": 2.309,
           "actual_tokens": null
         }
       },
@@ -50,7 +50,7 @@
           "consolidated_groups": 0,
           "repeat_llm_requests": 0,
           "repeat_cache_hits": 6,
-          "elapsed_seconds_mock_services": 2.488,
+          "elapsed_seconds_mock_services": 2.468,
           "actual_tokens": null
         },
         "adaptive": {
@@ -63,7 +63,7 @@
           "consolidated_groups": 2,
           "repeat_llm_requests": 0,
           "repeat_cache_hits": 2,
-          "elapsed_seconds_mock_services": 2.369,
+          "elapsed_seconds_mock_services": 2.338,
           "actual_tokens": null
         }
       },

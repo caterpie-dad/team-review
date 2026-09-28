@@ -62,6 +62,7 @@ python3 -m venv .venv
 | `.venv/bin/ruff check app tests scripts` | Python 정적 검사 |
 | `.venv/bin/python scripts/browser_members_check.py` | 계정 칩·기존 데이터 호환·연차·모바일 |
 | `.venv/bin/python scripts/browser_drafts_check.py` | 미완성 초안 저장·보완·삭제·실행 차단·취소·재시도 |
+| `.venv/bin/python scripts/browser_sources_check.py` | 여러 근거 URL 추가·삭제·저장·수집, 진행 화면 유지, 늦은 응답의 화면 덮어쓰기 방지 |
 | `.venv/bin/python scripts/browser_editing_check.py` | 사후 편집·기준·연결 설정·재분석 |
 | `.venv/bin/python scripts/browser_analysis_check.py` | 통합 근거·원본 열기·캐시·모바일 |
 | `.venv/bin/python scripts/benchmark_analysis.py` | 원본 diff/통합 분석의 문자 수와 호출 비교 |

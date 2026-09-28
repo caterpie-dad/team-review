@@ -32,6 +32,7 @@ const state = {
   selectedMember: null,
   selectedProject: null,
   timer: null,
+  pollEpoch: 0,
 };
 const uid = () =>
   "p-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
@@ -114,7 +115,7 @@ function shell(content) {
   }<span>평가자</span><span class="avatar">R</span></div></header><div class="fade">${content}</div><div class="footer-note">◈ &nbsp; 지정된 근거만 수집 · 산출물 중심 평가 · 조정 이력 보존</div></main></div>`;
 }
 function loginView() {
-  clearTimeout(state.timer);
+  stopPolling();
   $(
     "#app"
   ).innerHTML = `<main class="login-page"><section class="login-art"><div class="brand"><span class="brandmark">T</span>trace.</div><div><div class="eyebrow">EVERY CONTRIBUTION LEAVES A TRACE</div><h1>기여의 흔적을,<br>명확한 평가로.</h1><p>문서와 코드에 담긴 팀원의 기여를 살펴보세요.<br>흩어진 산출물을 연결하고, 근거로 판단합니다.</p></div><span class="tiny muted">PRIVATE TEAM REVIEW WORKSPACE</span></section><section class="login-form"><div class="login-box"><div class="eyebrow" style="margin-bottom:15px">WELCOME TO TRACE</div><h2>평가 워크스페이스</h2><p class="muted small-text">사전 설정된 비밀번호로 안전하게 접속하세요.</p><form id="login-form" class="form-stack"><label>대시보드 비밀번호<input name="password" type="password" autocomplete="current-password" placeholder="비밀번호 입력" required autofocus></label><div id="login-error" class="error" role="alert"></div><button class="primary" type="submit">워크스페이스 접속 &nbsp; →</button></form><div class="footer-note">이 공간의 평가 자료는 인증된 평가자만 확인할 수 있습니다.</div></div></section></main>`;
@@ -151,11 +152,11 @@ function overview() {
       running ? "산출물을 분석하고 있습니다" : "새 평가를 시작할 수 있습니다"
     }</div></div><div class="stat"><span class="glyph">✓</span><div class="label">완료된 평가</div><div class="value">${done}<span class="unit">건</span></div><div class="hint">결과 확인 및 세부 조정</div></div></section>${
       running
-        ? `<div class="banner info split"><span><i class="spinner"></i>${esc(
+        ? `<div class="banner info split"><span><i class="spinner"></i><span id="overview-progress">${esc(
             running.title
           )} · ${esc(running.message)} (${
             running.progress
-          }%)</span><button class="small" data-action="open" data-id="${
+          }%)</span></span><button class="small" data-action="open" data-id="${
             running.id
           }">진행 상황 →</button></div>`
         : ""
@@ -333,6 +334,16 @@ function newProject(year) {
     confluence_urls: [],
   };
 }
+function sourceList(project, key) {
+  return (project[key] || []).map((url, index) =>
+    `<li class="identity-tag"><span>${esc(url)}</span><button type="button" class="subtle small" data-action="remove-source" data-key="${key}" data-index="${index}" aria-label="${esc(url)} 삭제">✕</button></li>`
+  ).join("") || '<li class="help">추가된 링크가 없습니다.</li>';
+}
+function sourceControl(project, key, label, placeholder, help) {
+  const entry = state.editor.sourceEntries?.[project.id]?.[key] || "";
+  const id = esc(`source-${project.id}-${key}`);
+  return `<section class="source-control"><label for="${id}">${label}</label><div class="identity-add"><input id="${id}" type="url" data-source-entry="${key}" value="${esc(entry)}" placeholder="${esc(placeholder)}" autocomplete="off" maxlength="2048"><button type="button" data-action="add-source" data-key="${key}" aria-label="${label} 추가">＋ 추가</button></div><ul class="identity-list source-list" data-source-list="${key}" aria-label="추가된 ${label}" aria-live="polite">${sourceList(project, key)}</ul><p class="help">${help}</p></section>`;
+}
 function editorView() {
   state.view = "editor";
   const e = state.editor;
@@ -389,13 +400,15 @@ function editorView() {
                   }${esc(m.name)}</button>`
               )
               .join("") || '<p class="help">먼저 팀원을 등록하세요.</p>'
-          }</div></div><div class="form-grid"><label>GitHub repo 또는 org URL<textarea data-field="github_urls" placeholder="${esc(
-            state.meta.services.github.url
-          )}/org/repo">${esc(
-            p.github_urls.join("\n")
-          )}</textarea><span class="help">한 줄에 하나. 조직은 실행 시 소유 저장소 목록을 고정합니다.</span></label><label>Confluence 루트 페이지 URL<textarea data-field="confluence_urls" placeholder="루트 페이지 주소를 붙여넣으세요">${esc(
-            p.confluence_urls.join("\n")
-          )}</textarea><span class="help">루트와 하위 페이지만 조회합니다. 본문 링크는 따라가지 않습니다.</span></label></div><label>프로젝트 가중치<div class="weight"><input aria-label="프로젝트 가중치 슬라이더" data-weight-range="${
+          }</div></div><div class="form-grid">${sourceControl(
+            p, "github_urls", "GitHub repo 또는 org URL",
+            state.meta.services.github.url + "/org/repo",
+            "추가한 모든 저장소를 분석합니다. 조직은 실행 시 소유 저장소 목록을 고정합니다."
+          )}${sourceControl(
+            p, "confluence_urls", "Confluence 루트 페이지 URL",
+            "루트 페이지 주소를 붙여넣으세요",
+            "추가한 모든 루트와 하위 페이지를 분석합니다. 본문 링크는 따라가지 않습니다."
+          )}</div><label>프로젝트 가중치<div class="weight"><input aria-label="프로젝트 가중치 슬라이더" data-weight-range="${
             p.id
           }" type="range" min="1" max="100" step="1" value="${
             p.weight
@@ -446,16 +459,13 @@ function captureEditor() {
   state.editor.year = Number($("#eval-year").value);
   document.querySelectorAll("[data-project]").forEach((el) => {
     const p = state.editor.projects.find((p) => p.id === el.dataset.project);
+    state.editor.sourceEntries ||= {};
+    state.editor.sourceEntries[p.id] = Object.fromEntries(
+      [...el.querySelectorAll("[data-source-entry]")].map(input => [input.dataset.sourceEntry, input.value])
+    );
     el.querySelectorAll("[data-field]").forEach((input) => {
       const key = input.dataset.field;
-      p[key] = key.endsWith("_urls")
-        ? input.value
-            .split("\n")
-            .map((v) => v.trim())
-            .filter(Boolean)
-        : key === "weight"
-        ? Number(input.value)
-        : input.value;
+      p[key] = key === "weight" ? Number(input.value) : input.value;
     });
   });
 }
@@ -467,7 +477,7 @@ function updateWeight() {
     Math.abs(total - 100) < 0.001 ? "valid" : "invalid";
 }
 async function openEvaluation(id) {
-  clearTimeout(state.timer);
+  stopPolling();
   state.evaluation = await api("/evaluations/" + id);
   state.view = "detail";
   state.selectedMember = null;
@@ -639,7 +649,7 @@ function detailView() {
         : esc(statusNames[e.status])
     }</h2>${badge(
       e.status
-    )}</div><p class="muted small-text" style="margin-top:15px">${esc(
+    )}</div><p id="progress-message" class="muted small-text" style="margin-top:15px">${esc(
       e.error || e.message || "프로젝트 설정을 확인한 후 평가를 시작하세요."
     )}</p>${
       e.status === "running"
@@ -647,7 +657,7 @@ function detailView() {
             e.progress
           }" aria-valuemin="0" aria-valuemax="100"><span style="width:${
             e.progress
-          }%"></span></div><div class="split"><span class="help">다른 평가를 동시에 실행할 수 없습니다. 이 화면을 닫아도 작업은 계속됩니다.</span><strong class="mono">${
+          }%"></span></div><div class="split"><span class="help">다른 평가를 동시에 실행할 수 없습니다. 이 화면을 닫아도 작업은 계속됩니다.</span><strong id="progress-value" class="mono">${
             e.progress
           }%</strong></div><button class="small danger" style="margin-top:22px" data-action="cancel">${
             e.cancel_requested ? "취소 요청됨" : "실행 취소"
@@ -712,13 +722,7 @@ function detailView() {
         ? `<div class="banner" role="status"><strong>초안이 저장되었습니다. 평가 시작 전에 다음 항목을 확인하세요.</strong><ul>${e.draft_issues.map((message) => `<li>${esc(message)}</li>`).join("")}</ul><button class="small" data-action="edit-evaluation">설정 보완하기</button></div>`
         : ""
     }${
-      (e.warnings || []).length
-        ? `<div class="banner"><details><summary>수집 및 귀속 경고 ${
-            e.warnings.length
-          }건 · 결과 검토 시 확인하세요</summary><ul>${e.warnings
-            .map((w) => `<li>${esc(w)}</li>`)
-            .join("")}</ul></details></div>`
-        : ""
+      `<div id="evaluation-warnings">${warningBlock(e.warnings || [])}</div>`
     }${
       e.status === "finalized"
         ? `<div class="banner info">확정된 평가입니다. 편집 내용을 저장하면 검토 상태로 전환됩니다. ${esc(
@@ -764,29 +768,95 @@ function adjustmentModal(key) {
     }<button type="button" data-action="close-modal">취소</button><button class="primary" type="submit">조정 반영</button></div></form>`
   );
 }
-function schedulePoll() {
+function warningBlock(warnings) {
+  return warnings.length ? `<div class="banner"><details><summary>수집 및 귀속 경고 ${warnings.length}건 · 결과 검토 시 확인하세요</summary><ul>${warnings.map(w => `<li>${esc(w)}</li>`).join("")}</ul></details></div>` : "";
+}
+function updateRunningDetail(previous) {
+  const e = state.evaluation;
+  const setText = (selector, text) => {
+    const node = $(selector);
+    if (node.textContent !== String(text)) node.textContent = text;
+  };
+  setText("#progress-message", e.error || e.message || "근거를 분석하고 있습니다");
+  setText("#progress-value", `${e.progress}%`);
+  const bar = $('[role="progressbar"]');
+  if (bar.getAttribute("aria-valuenow") !== String(e.progress)) {
+    bar.setAttribute("aria-valuenow", e.progress);
+    $("span", bar).style.width = `${e.progress}%`;
+  }
+  setText('[data-action="cancel"]', e.cancel_requested ? "취소 요청됨" : "실행 취소");
+  if (JSON.stringify(previous.warnings) !== JSON.stringify(e.warnings)) {
+    const container = $("#evaluation-warnings");
+    if ($("details", container) && e.warnings?.length) {
+      $("summary", container).textContent = `수집 및 귀속 경고 ${e.warnings.length}건 · 결과 검토 시 확인하세요`;
+      $("ul", container).innerHTML = e.warnings.map(w => `<li>${esc(w)}</li>`).join("");
+    } else {
+      container.innerHTML = warningBlock(e.warnings || []);
+    }
+  }
+}
+function overviewStructure(members, evaluations) {
+  return JSON.stringify([members.filter(m => m.active).length, evaluations.map(e =>
+    [e.id, e.title, e.year, e.demo, e.project_count, e.member_count, e.status])]);
+}
+function stopPolling() {
   clearTimeout(state.timer);
-  if (!["detail", "overview"].includes(state.view)) return;
-  const active =
-    state.evaluations.some((e) => e.status === "running") ||
-    state.evaluation?.status === "running";
+  state.pollEpoch++;
+}
+function schedulePoll() {
+  stopPolling();
+  const view = state.view;
+  if (!["detail", "overview"].includes(view)) return;
+  const active = state.evaluations.some(e => e.status === "running") ||
+    (view === "detail" && state.evaluation?.status === "running");
   if (!active) return;
+  const epoch = state.pollEpoch;
+  const id = view === "detail" ? state.evaluation?.id : null;
+  const current = () => epoch === state.pollEpoch && view === state.view &&
+    (view !== "detail" || id === state.evaluation?.id);
   state.timer = setTimeout(async () => {
     try {
-      await refresh();
-      if (state.view === "detail" && state.evaluation) {
-        state.evaluation = await api("/evaluations/" + state.evaluation.id);
-        detailView();
-      } else if (state.view === "overview") {
+      const [members, evaluations, evaluation] = await Promise.all([
+        api("/members"), api("/evaluations"),
+        id ? api("/evaluations/" + id) : Promise.resolve(null),
+      ]);
+      // A response from a screen we left must never replace the current screen.
+      if (!current()) return;
+      const previous = state.evaluation;
+      const changed = overviewStructure(state.members, state.evaluations) !== overviewStructure(members, evaluations);
+      const wasBusy = busy();
+      state.members = members;
+      state.evaluations = evaluations;
+      if (view === "detail") {
+        state.evaluation = evaluation;
+        if (previous.status === "running" && evaluation.status === "running") {
+          updateRunningDetail(previous);
+        } else if (JSON.stringify(previous) !== JSON.stringify(evaluation) || wasBusy !== busy()) {
+          detailView();
+          return;
+        }
+      } else if (changed) {
         overview();
+        return;
+      } else {
+        const running = evaluations.find(e => e.status === "running");
+        const node = $("#overview-progress");
+        if (running && node) {
+          const text = `${running.title} · ${running.message} (${running.progress}%)`;
+          if (node.textContent !== text) node.textContent = text;
+        }
       }
+      schedulePoll();
     } catch (e) {
-      toast(e.message);
+      if (current()) {
+        toast(e.message);
+        schedulePoll();
+      }
     }
   }, 1800);
 }
 async function navigate(view) {
-  clearTimeout(state.timer);
+  stopPolling();
   await refresh();
   if (view === "overview") overview();
   if (view === "members") membersView();
@@ -817,6 +887,29 @@ async function handleAction(el) {
     return;
   }
   captureEditor();
+  if (["add-source", "remove-source"].includes(action)) {
+    const card = el.closest("[data-project]");
+    const project = state.editor.projects.find(p => p.id === card.dataset.project);
+    const key = el.dataset.key;
+    const input = $(`[data-source-entry="${key}"]`, card);
+    if (action === "add-source") {
+      const value = input.value.trim();
+      let parsed;
+      try { parsed = new URL(value); } catch (_) { /* Show the same validation below. */ }
+      if (!parsed || !["http:", "https:"].includes(parsed.protocol) || parsed.username || parsed.password || /\s/.test(value))
+        return toast("http 또는 https URL을 하나만 입력하세요.");
+      if (project[key].includes(value)) return toast("이미 추가된 링크입니다.");
+      if (project[key].length >= 30) return toast("링크는 프로젝트의 서비스별 최대 30개까지 추가할 수 있습니다.");
+      project[key].push(value);
+      input.value = "";
+      state.editor.sourceEntries[project.id][key] = "";
+    } else {
+      project[key].splice(Number(el.dataset.index), 1);
+    }
+    $(`[data-source-list="${key}"]`, card).innerHTML = sourceList(project, key);
+    input.focus();
+    return;
+  }
   if (action === "close-modal") return closeModal();
   if (action === "nav") return navigate(el.dataset.view);
   if (action === "logout") {
@@ -838,7 +931,7 @@ async function handleAction(el) {
       revision: 0,
       projects: [newProject(year)],
     };
-    clearTimeout(state.timer);
+    stopPolling();
     return editorView();
   }
   if (action === "add-member") return memberModal();
@@ -857,12 +950,12 @@ async function handleAction(el) {
   }
   if (action === "edit-from-list") {
     state.editor = await api("/evaluations/" + el.dataset.id);
-    clearTimeout(state.timer);
+    stopPolling();
     return editorView();
   }
   if (action === "edit-evaluation") {
     state.editor = JSON.parse(JSON.stringify(state.evaluation));
-    clearTimeout(state.timer);
+    stopPolling();
     return editorView();
   }
   if (action === "add-project") {
@@ -903,6 +996,11 @@ async function handleAction(el) {
     return editorView();
   }
   if (action === "save-evaluation") {
+    const pending = [...document.querySelectorAll("[data-source-entry]")].find(input => input.value.trim());
+    if (pending) {
+      pending.focus();
+      return toast("입력 중인 링크의 추가 버튼을 누른 뒤 저장하세요.");
+    }
     const e = state.editor;
     const body = {
       title: e.title,
@@ -1042,6 +1140,10 @@ document.addEventListener("click", async (event) => {
   }
 });
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && event.target.matches("[data-source-entry]")) {
+    event.preventDefault();
+    $(`[data-action="add-source"][data-key="${event.target.dataset.sourceEntry}"]`, event.target.closest("[data-project]")).click();
+  }
   if (event.key === "Enter" && event.target.matches(".identity-entry")) {
     event.preventDefault();
     document

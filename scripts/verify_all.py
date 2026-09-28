@@ -27,6 +27,7 @@ steps = [
     ("start-shell", ["bash", "-n", "start.sh"]),
     ("members-browser", [python, "scripts/browser_members_check.py"]),
     ("drafts-browser", [python, "scripts/browser_drafts_check.py"]),
+    ("sources-browser", [python, "scripts/browser_sources_check.py"]),
     ("editing-browser", [python, "scripts/browser_editing_check.py"]),
     ("analysis-browser", [python, "scripts/browser_analysis_check.py"]),
     ("analysis-benchmark", [python, "scripts/benchmark_analysis.py"]),

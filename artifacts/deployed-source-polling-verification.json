@@ -1,0 +1,9 @@
+{
+  "mode": "existing Docker dashboard, read-only UI checks",
+  "members": 10,
+  "evaluations": 4,
+  "data_preserved": true,
+  "source_controls_verified": true,
+  "stable_polling_code_served": true,
+  "page_errors": []
+}
