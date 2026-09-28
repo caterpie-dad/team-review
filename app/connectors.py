@@ -14,13 +14,10 @@ from .domain import (
     RubricInput,
 )
 from .analysis import options, consecutive_runs, compact_run, select_evidence
+from .source_errors import SourceError, ResourceError, request_error
 
 
 class Cancelled(Exception):
-    pass
-
-
-class SourceError(Exception):
     pass
 
 
@@ -52,6 +49,7 @@ class Collector:
             progress,
         )
         self.warnings, self.scope = [], {}
+        self.issue_callback = lambda issue: None
         self.client = httpx.Client(
             timeout=cfg.get("limits", {}).get("request_timeout", 30),
             follow_redirects=False,
@@ -83,6 +81,7 @@ class Collector:
             else:
                 headers["Authorization"] = "Bearer " + config["token"]
         for attempt in range(3):
+            self.check()
             try:
                 response = self.client.get(
                     base + "/" + path.lstrip("/"),
@@ -90,10 +89,17 @@ class Collector:
                     headers=headers,
                     auth=auth,
                 )
-            except httpx.HTTPError:
+            except httpx.HTTPError as exc:
                 if attempt == 2:
-                    raise SourceError(
-                        f"{service} 연결 실패. URL·네트워크·인증 설정을 확인하세요."
+                    raise request_error(
+                        self.cfg,
+                        service,
+                        path,
+                        params,
+                        network="timeout"
+                        if isinstance(exc, httpx.TimeoutException)
+                        else "connection_error",
+                        attempts=attempt + 1,
                     ) from None
                 time.sleep(0.3 * (attempt + 1))
                 continue
@@ -106,13 +112,26 @@ class Collector:
                 self.check()
                 continue
             if response.status_code != 200:
-                raise SourceError(
-                    f"{service} HTTP {response.status_code}. 접근 권한과 서비스 상태를 확인하세요."
+                raise request_error(
+                    self.cfg,
+                    service,
+                    path,
+                    params,
+                    response=response,
+                    attempts=attempt + 1,
                 )
             try:
                 return response.json()
             except ValueError:
-                raise SourceError(f"{service} JSON 응답 오류") from None
+                raise request_error(
+                    self.cfg,
+                    service,
+                    path,
+                    params,
+                    response=response,
+                    attempts=attempt + 1,
+                    invalid_json=True,
+                ) from None
         raise SourceError(f"{service} 재시도 횟수 초과")
 
     def gh_list(self, path, params=None):
@@ -139,6 +158,19 @@ class Collector:
         self.warnings.append(
             "Confluence API 페이지 한도에 도달했습니다. 일부 자료가 누락될 수 있습니다."
         )
+
+    def skip(self, error, stage):
+        issue = {**error.detail, "stage": stage, "message": str(error)}
+        self.scope.setdefault("collection_issues", []).append(issue)
+        self.warnings.append(f"수집 제외 ({stage}): {error}")
+        self.issue_callback(issue)
+
+    def available_gh_list(self, path, params=None):
+        # Keep earlier pages when a later page fails, and continue the next source.
+        try:
+            yield from self.gh_list(path, params)
+        except ResourceError as exc:
+            self.skip(exc, "GitHub 목록")
 
     def owner(self, source, ids):
         keys = ["github_ids"] if source == "github" else ["confluence_ids"]
@@ -205,7 +237,7 @@ class Collector:
                 repos.append(src["name"])
             else:
                 org = src["name"]
-                for r in self.gh_list(
+                for r in self.available_gh_list(
                     f"orgs/{quote(org, safe='')}/repos", {"type": "all"}
                 ):
                     if (
@@ -234,7 +266,7 @@ class Collector:
             self.progress(f"GitHub · {repo} 변경분 수집")
             # GitHub list commits defaults to the default branch; branch scope is explicit in the report.
             self.scope.setdefault("github_branch_policy", "default branch only")
-            commits = self.gh_list(
+            commits = self.available_gh_list(
                 f"repos/{repo}/commits",
                 {
                     "since": project["start"] + "T00:00:00Z",
@@ -260,11 +292,15 @@ class Collector:
                 stamp = commit.get("commit", {}).get("committer", {}).get("date", "")
                 if not in_period(stamp, project):
                     continue
-                detail = self.get(
-                    "github",
-                    f"repos/{repo}/commits/{sha}",
-                    {"per_page": 100, "page": 1},
-                )
+                try:
+                    detail = self.get(
+                        "github",
+                        f"repos/{repo}/commits/{sha}",
+                        {"per_page": 100, "page": 1},
+                    )
+                except ResourceError as exc:
+                    self.skip(exc, "GitHub 커밋")
+                    continue
                 if detail.get("sha") != sha:
                     raise SourceError(
                         "요청한 GitHub 커밋과 응답 SHA가 일치하지 않습니다."
@@ -415,15 +451,29 @@ class Collector:
                 raise SourceError("Confluence 페이지 ID 형식 오류")
             visited.add(page)
             self.progress(f"Confluence · 페이지 {page} 버전 분석")
-            current = self.get("confluence", f"content/{page}", {"expand": "version"})
-            latest = int(current.get("version", {}).get("number", 1))
-            first = max(1, latest - self.limits["max_versions"] + 1)
-            if first > 1:
-                self.warnings.append(
-                    f"Confluence {page}: 오래된 버전이 수집 한도 때문에 생략되었습니다."
-                )
-            previous = ""
-            if first > 1:
+            try:
+                out.extend(self.confluence_versions(page, project))
+            except ResourceError as exc:
+                self.skip(exc, "Confluence 페이지")
+            try:
+                for child in self.cf_list(f"content/{page}/child/page"):
+                    queue.append(str(child["id"]))
+            except ResourceError as exc:
+                self.skip(exc, "Confluence 하위 페이지 목록")
+        self.scope["confluence_pages"] = sorted(visited)
+        return out
+
+    def confluence_versions(self, page, project):
+        current = self.get("confluence", f"content/{page}", {"expand": "version"})
+        latest = int(current.get("version", {}).get("number", 1))
+        first = max(1, latest - self.limits["max_versions"] + 1)
+        if first > 1:
+            self.warnings.append(
+                f"Confluence {page}: 오래된 버전이 수집 한도 때문에 생략되었습니다."
+            )
+        previous = ""
+        if first > 1:
+            try:
                 prior = self.get(
                     "confluence",
                     f"content/{page}",
@@ -436,7 +486,11 @@ class Collector:
                 previous = plain(
                     prior.get("body", {}).get("storage", {}).get("value", "")
                 )
-            for version in range(first, latest + 1):
+            except ResourceError as exc:
+                self.skip(exc, "Confluence 기준 버전")
+                previous = None
+        for version in range(first, latest + 1):
+            try:
                 data = self.get(
                     "confluence",
                     f"content/{page}",
@@ -446,56 +500,67 @@ class Collector:
                         "expand": "body.storage,version",
                     },
                 )
-                text = plain(data.get("body", {}).get("storage", {}).get("value", ""))
-                v = data.get("version", {})
-                if int(v.get("number", 0)) != version:
-                    raise SourceError(
-                        f"Confluence {page}: 요청한 버전과 응답 버전이 일치하지 않습니다."
-                    )
-                stamp = v.get("when", "")
-                if in_period(stamp, project):
-                    by = v.get("by", {})
-                    author = self.owner(
-                        "confluence",
-                        [by.get("accountId"), by.get("username"), by.get("userKey")],
-                    )
-                    diff = "\n".join(
-                        difflib.unified_diff(
-                            previous.splitlines(),
-                            text.splitlines(),
-                            fromfile=f"v{version - 1}",
-                            tofile=f"v{version}",
-                            lineterm="",
-                        )
-                    )
-                    e = self.evidence(
-                        "confluence",
-                        f"{page}:v{version}",
-                        self.cfg["confluence"]["web_url"].rstrip("/")
-                        + "/pages/viewpage.action?pageId="
-                        + page,
-                        data.get("title", current.get("title", page)),
-                        diff,
-                        author,
-                        stamp,
-                        project,
-                        {
-                            "page_id": page,
-                            "version": version,
-                            "previous_version": version - 1,
-                        },
-                    )
-                    if e:
-                        out.append(e)
+            except ResourceError as exc:
+                self.skip(exc, "Confluence 문서 버전")
+                previous = None
+                continue
+            text = plain(data.get("body", {}).get("storage", {}).get("value", ""))
+            v = data.get("version", {})
+            if int(v.get("number", 0)) != version:
+                raise SourceError(
+                    f"Confluence {page}: 요청한 버전과 응답 버전이 일치하지 않습니다."
+                )
+            stamp = v.get("when", "")
+            if previous is None:
+                # This version restores the baseline; its changes cannot be attributed safely.
                 previous = text
-            for child in self.cf_list(f"content/{page}/child/page"):
-                queue.append(str(child["id"]))
-        self.scope["confluence_pages"] = sorted(visited)
-        return out
+                self.warnings.append(
+                    f"Confluence {page} v{version}: 이전 버전 누락으로 변경분 귀속을 보류했습니다."
+                )
+                continue
+            if in_period(stamp, project):
+                by = v.get("by", {})
+                author = self.owner(
+                    "confluence",
+                    [by.get("accountId"), by.get("username"), by.get("userKey")],
+                )
+                diff = "\n".join(
+                    difflib.unified_diff(
+                        previous.splitlines(),
+                        text.splitlines(),
+                        fromfile=f"v{version - 1}",
+                        tofile=f"v{version}",
+                        lineterm="",
+                    )
+                )
+                e = self.evidence(
+                    "confluence",
+                    f"{page}:v{version}",
+                    self.cfg["confluence"]["web_url"].rstrip("/")
+                    + "/pages/viewpage.action?pageId="
+                    + page,
+                    data.get("title", current.get("title", page)),
+                    diff,
+                    author,
+                    stamp,
+                    project,
+                    {
+                        "page_id": page,
+                        "version": version,
+                        "previous_version": version - 1,
+                    },
+                )
+                if e:
+                    yield e
+            previous = text
 
     def collect(self, project):
         self.seen, self.warnings, self.scope = set(), [], {}
         data = self.github(project) + self.confluence(project)
+        self.scope["collection_incomplete"] = any(
+            issue["code"] != "empty_repository"
+            for issue in self.scope.get("collection_issues", [])
+        )
         return data, list(self.warnings), dict(self.scope)
 
 

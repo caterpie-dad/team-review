@@ -6,11 +6,12 @@
 
 | 검증 | 결과 및 근거 |
 | --- | --- |
-| 자동 테스트 | 118개 통과. [JUnit](../artifacts/full-suite.xml), [로그](../artifacts/verification-logs/tests.log) |
+| 자동 테스트 | 139개 통과. [JUnit](../artifacts/full-suite.xml), [로그](../artifacts/verification-logs/tests.log) |
 | 정적·구문 검사 | Ruff, Python compileall, 두 JavaScript 파일, 시작 스크립트 Bash 구문 검사 |
 | 팀원 브라우저 | ID 추가·삭제·저장·재열기, 기존 누락/null 데이터, 연차·CL·종합점수, 모바일. [결과](../artifacts/level-verification.json) |
 | 초안 브라우저 | 미완성 저장·보완·실행, 두 번째 실행 차단, 취소·재시도, 초안 삭제. [결과](../artifacts/draft-verification.json) |
 | 근거 링크·진행 화면 브라우저 | 복수 URL 추가/Enter·삭제·중복 방지·재열기·모바일, 모든 링크 수집, DOM·포커스·스크롤·펼친 경고 유지, 늦은 응답 무시, 완료 전환. [결과](../artifacts/source-polling-verification.json) |
+| 수집 실패 브라우저 | 10명·6개 프로젝트에서 409 빈 저장소/403 저장소/404 문서 제외 후 30건 평가 완료, 진행 중 경로·원인 표시, 영향받은 결과만 잠정, 모바일. [결과](../artifacts/collection-verification.json) |
 | 사후 편집 브라우저 | 참여자·가중치·의견·기준 편집, 부분/전체 재분석, 보정 유지, 확정 후 편집, 세 서비스 설정과 연결. [결과](../artifacts/editing-verification.json) |
 | 분석 효율 브라우저 | 48개 커밋 분석, 통합/원본 근거 열기, 평가 복제와 캐시 표시, 모바일. [결과](../artifacts/analysis-browser-verification.json) |
 | Docker 종합 브라우저 | 로그인부터 생성·진행률·조정·근거·감사 이력·CSV·확정/해제·로그아웃, 가중치 슬라이더 및 모바일. [결과](../artifacts/browser-verification.json) |
@@ -18,6 +19,8 @@
 | 시작 스크립트·문서 | 운영/데모 분기, 설정 자동 생성과 기존 파일 보존, 비밀번호 비노출, 잘못된 모드 거부, 운영 README 분리 및 로컬 링크 검사. [로그](../artifacts/verification-logs/documentation.log) |
 
 모든 브라우저 시나리오에서 JavaScript page error는 0건이다. 자동 테스트에서는 Starlette TestClient가 사용하는 AnyIO 별칭의 DeprecationWarning 1건이 발생했다.
+
+수집 실패 격리 변경까지 포함하여 전체 검증 15단계를 통과했다. 로컬 대시보드 배포 전후 저장된 팀원·평가 상세·서비스 설정의 해시를 비교해 팀원 10명과 평가 4건이 보존됐음을 확인했다. 새 진단 UI와 수집 복구 모듈이 제공되며 브라우저 오류는 없었다. [수집 오류 처리 배포 기록](../artifacts/deployed-collection-verification.json).
 
 2026-09-28 실행 중인 데모 대시보드에도 변경을 배포했다. 배포 전후 팀원 10명·평가 4건·저장 설정과 평가 상세의 해시가 일치했고, 기존 평가 편집 화면에서 저장된 링크 목록과 추가 버튼을 확인했다. JavaScript 오류는 없었다. [배포 확인 기록](../artifacts/deployed-source-polling-verification.json).
 
@@ -32,6 +35,7 @@
 | 실행 제어 | 한 번에 한 평가, 동시 요청 원자성, 진행률, 다른 시작 버튼 비활성화, 취소·실패 후 재시도, 재시작 복구, 두 번째 프로세스 거부 | `tests/test_api.py`, `scripts/browser_drafts_check.py` |
 | 출처·기간 제한 | repo/org 범위 고정, Confluence 루트·버전별 작성자, 기간 밖 자료 제외, URL 위장·외부 페이지네이션·리다이렉트 차단 | `tests/test_domain.py`, `tests/test_connectors.py` |
 | 여러 근거 링크 | 두 저장소와 두 문서 루트의 귀속 가능한 근거가 빠짐없이 LLM 요청에 포함됨, 중복 저장소·겹치는 하위 페이지 중복 제거 | `tests/test_sources.py`, `scripts/browser_sources_check.py` |
+| 수집 실패 격리 | HTTP/네트워크 오류의 안전한 분류, repo/org/commit/page/version/목록 실패 격리, 전부 실패해도 null 판정으로 완료, 재수집 복구, JSON/CSV 잠정 상태 | `tests/test_collection_failures.py`, `scripts/browser_collection_check.py` |
 | 수집 한계 | 미귀속 저자, 병합·바이너리·생성물 처리, 수집 상한, 절단 경고, 버전 불일치와 접근 실패 | `tests/test_connectors.py`, `scripts/verify_demo.py` |
 | LLM 계약 | 개인별 근거 제한, 기준 전달, JSON 스키마, 근거 ID·정확한 인용, 점수 범위·NaN·설명·신뢰도 검증, 잘못된 응답 재시도 | `tests/test_domain.py`, `tests/test_connectors.py`, `tests/test_editing_settings.py` |
 | 집계·자료 부족 | 기준/프로젝트 가중평균, 참여 분모, 충족률, 자료 없는 차원 보류, CL 보정, 과거 정책 스냅샷 | `tests/test_domain.py`, `tests/test_levels.py`, `scripts/verify_demo.py` |

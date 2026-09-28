@@ -70,3 +70,9 @@
 평가에 `analysis_policy`를 보존하며 결과별 `analysis`에는 `strategy`, `original_items`, `sent_items`, `original_chars`, `sent_chars`, `reduction_percent`, `consolidated_groups`, `requests`, `cache_hits`, `request_chars`, `input_tokens`, `output_tokens`, `evidence_ids`를 포함한다. `sent_chars`는 캐시 조회 전 선택된 근거 본문 크기이며 `request_chars`는 실제 요청 메시지의 문자 수다. API가 토큰 사용량을 반환하지 않으면 토큰 필드는 null이다. `requests`에는 재시도도 포함한다. `force:true`는 기존 판정 캐시를 읽지 않고 모든 판정을 다시 요청한다.
 
 원본 evidence를 보존하고 별도의 `metadata.kind=github_consolidated` 근거를 추가한다. 통합 근거의 `source_hashes`는 원본 evidence ID/본문 해시, `base_commit`/`head_commit`은 연속 구간 경계다. 실제 LLM에 선택된 근거 ID는 결과의 `analysis.evidence_ids`로 확인한다.
+
+## 수집 제외와 잠정 결과
+
+상세/JSON 내보내기의 `scopes[project_id].collection_issues`는 수집에서 건너뛴 요청 목록이다. 각 항목은 `service`, `method`, `url`, `status`(네트워크 오류는 null), `code`, `reason`, `hint`, `attempts`, `stage`, `message`를 포함한다. URL에는 인증 정보나 임의 쿼리를 포함하지 않는다. 오류 원문·인증 헤더는 제공하지 않는다.
+
+접근 실패가 있어도 나머지 수집과 판정이 끝나면 상태는 `completed`이다. 영향받은 scope/result 및 집계의 프로젝트에 `collection_incomplete`가 표시되며, 종합 집계의 `provisional`은 자료 부족 또는 일부 수집 실패가 있음을 뜻한다. 빈 저장소만 제외된 경우에는 `collection_incomplete=false`이다. CSV 마지막 두 열은 `provisional`(개인 종합)과 `collection_incomplete`(프로젝트)다. 없는 근거는 null 점수이며 낮은 기여로 환산하지 않는다. `/start`의 `force:true`로 전체 재수집할 수 있다.

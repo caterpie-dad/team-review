@@ -1,0 +1,8 @@
+{
+  "mode": "existing Docker dashboard, read-only checks",
+  "members": 10,
+  "evaluations": 4,
+  "stored_data_preserved": true,
+  "diagnostic_ui_served": true,
+  "page_errors": []
+}

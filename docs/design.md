@@ -12,7 +12,7 @@ SQLite는 members, evaluations, sessions, audit를 저장한다. 평가는 프�
 `draft → running → completed → finalized`. running은 failed/cancelled로도 종료된다. failed/cancelled는 다시 시작할 수 있고 이전 실행 결과를 감사 기록에 보존한다. completed/finalized는 사유를 남겨 편집하거나 전체 재분석할 수 있다. finalized → completed는 확정 해제 이유를 요구한다. 실행 중인 평가의 설정은 불변이다. 실행 전후 편집은 이전 버전을 보존한다. 프로세스 재시작 시 남은 running은 failed(interrupted)로 복구한다.
 
 ## 수집 경계
-사용자 URL의 scheme/origin은 설정된 web URL과 정확히 일치해야 한다. URL에서 repo, org, page ID만 추출하며 네트워크 요청은 설정된 API base에 고정된 상대 경로로 직접 생성한다. 외부 응답에 들어있는 URL이나 페이지네이션 URL을 요청하지 않고 page/start 값을 자체 증가시킨다. 리다이렉트를 따르지 않는다. 조직 목록은 해당 조직 소유 repo만 허용하고 forks/archived를 제외한다. Confluence는 루트에서 child/page BFS만 수행한다. body 내 하이퍼링크나 attachment는 조회하지 않는다. 버전별 수정자와 이전 버전 대비 diff를 근거로 사용한다. API 권한/일시 오류는 제한 재시도하고, 실패는 실행 실패로 드러낸다. 한도 도달과 제외된 데이터는 warnings로 표시한다.
+사용자 URL의 scheme/origin은 설정된 web URL과 정확히 일치해야 한다. URL에서 repo, org, page ID만 추출하며 네트워크 요청은 설정된 API base에 고정된 상대 경로로 직접 생성한다. 외부 응답에 들어있는 URL이나 페이지네이션 URL을 요청하지 않고 page/start 값을 자체 증가시킨다. 리다이렉트를 따르지 않는다. 조직 목록은 해당 조직 소유 repo만 허용하고 forks/archived를 제외한다. Confluence는 루트에서 child/page BFS만 수행한다. body 내 하이퍼링크나 attachment는 조회하지 않는다. 버전별 수정자와 이전 버전 대비 diff를 근거로 사용한다. 네트워크·일시 HTTP 오류는 최대 3회 요청한다. 수집 요청의 접근 실패는 `ResourceError`로 구분하고 org/repo 목록, 커밋, 문서 버전, 하위 목록 단위로 격리한다. 앞서 확보한 페이지와 다른 경로는 유지한다. `scopes[project_id].collection_issues`에 비밀 값이 제거된 요청 경로·코드·안전하게 분류한 원인·조치를 기록하고 worker가 진행 중에도 저장한다. 임의 응답 본문과 인증 헤더는 반환하지 않는다. 무결성·LLM 판정 오류는 계속 실행 실패로 처리한다. 한도 도달과 제외된 데이터는 warnings로 표시한다.
 
 ## LLM 계약
 프로젝트/개인별 근거를 제한된 크기의 배치로 분석한다. 모델에는 차원 기준, 근거 ID/본문, 출력 JSON 스키마만 제공하고 비밀/개인 이름은 전달하지 않는다. 근거 인용은 제출된 내용의 substring 검증, ID allowlist 검증을 통과해야 한다. 모든 기준은 정확히 한 번 반환되어야 하며 유한 0~100 점수 또는 null을 허용한다. 점수가 있으면 적어도 하나의 유효 인용을 요구한다. 모델 출력은 실행 가능한 HTML이 아닌 텍스트로 표시한다. 배치 결과는 동일 가중으로 통합하고 각 배치의 개별 근거를 보존한다. 이는 변경 수 가중이 아니며, 배치 경계의 영향은 한계로 표시한다.
@@ -51,3 +51,7 @@ GitHub의 커밋 조회는 기본 브랜치와 since/until 범위를 지원하�
 공통 설정은 기본 TOML 위에 DB 옆 JSON을 덮어 적용한다. 설정 파일은 0600 임시 파일→fsync→원자적 rename으로 교체하며 revision으로 동시 수정을 감지한다. 설정 저장과 실행 시작은 SQLite 쓰기 트랜잭션을 통해 조정되어 실행 중 설정 변경을 방지한다. 토큰은 GET/검증 오류/감사 응답에서 제외한다. 연결 테스트는 redirect 미추적, 15초 timeout, 외부 오류 본문 비노출을 적용한다.
 
 연결 확인 API 참고: [Confluence current user](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/), [GitHub authenticated user](https://docs.github.com/en/rest/users/users#get-the-authenticated-user). 연결 검사는 평가 근거 수집과 별개이며 사용자 확인 응답을 평가에 사용하지 않는다.
+
+일부 수집 실패가 있는 결과에는 `collection_incomplete`를 저장한다. 프로젝트와 종합 집계는 `provisional` 표시를 제공하고 CSV에도 누락 상태를 추가한다. 누락 비율은 알 수 없으므로 임의로 점수를 깎거나 기존 coverage 수치에 섞지 않는다. 빈 저장소로 확인된 응답은 근거가 없는 정상 제외로 구분한다. Confluence 중간 버전 접근 실패 후 첫 정상 버전은 기준 복구에만 사용하여 다른 사람의 누적 변경을 잘못 귀속하지 않는다.
+
+GitHub 상태 해석 참고: [409와 빈/준비 중 저장소](https://docs.github.com/en/rest/guides/using-the-rest-api-to-interact-with-your-git-database), [권한·호출 한도 오류](https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api).

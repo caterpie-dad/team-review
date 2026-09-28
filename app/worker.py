@@ -66,6 +66,7 @@ class Worker:
             if (p["id"], mid) not in completed
         ]
         pending_pids = {p["id"] for p, _ in pending}
+        phase = "평가 준비"
         try:
             total = len(pending_pids) + len(pending)
             done = 0
@@ -75,6 +76,22 @@ class Worker:
                     continue
                 check()
                 pid = project["id"]
+                phase = f"프로젝트 {project['name']} · 근거 수집"
+                # Remove previous-run skip warnings for this scope when recollecting it.
+                old_skips = {
+                    f"{project['name']}: 수집 제외 ({issue['stage']}): {issue['message']}"
+                    for issue in scopes.get(pid, {}).get("collection_issues", [])
+                }
+                warnings = [w for w in warnings if w not in old_skips]
+
+                def report_issue(issue):
+                    scopes[pid] = copy.deepcopy(collector.scope)
+                    note = f"{project['name']}: 수집 제외 ({issue['stage']}): {issue['message']}"
+                    if note not in warnings:
+                        warnings.append(note)
+                    self.update(eid, scopes=scopes, warnings=warnings)
+
+                collector.issue_callback = report_issue
                 items, notes, scope = collector.collect(project)
                 for item in items:
                     if item["id"] in evidence_projects:
@@ -107,6 +124,7 @@ class Worker:
                 )
             for project, mid in pending:
                 check()
+                phase = f"프로젝트 {project['name']} · 팀원 {mid} · LLM 분석"
                 self.update(eid, message=f"{project['name']} · {mid} 근거 기반 분석")
                 own = [e for e in evidence[project["id"]] if e["member_id"] == mid]
                 member = next(m for m in ev["members_snapshot"] if m["id"] == mid)
@@ -127,6 +145,12 @@ class Worker:
                     rubric_version=ev["rubric"]["version"],
                     analyzed_at=now(),
                 )
+                if scopes.get(project["id"], {}).get("collection_incomplete"):
+                    result["collection_incomplete"] = True
+                    result["limitations"] += (
+                        "\n일부 근거 경로를 수집하지 못했습니다. 확보된 자료만 분석한 잠정 결과이며 "
+                        "수집 제외 내역을 확인하세요. 자료 누락은 낮은 기여의 증거가 아닙니다."
+                    )
                 override = next(
                     (
                         r
@@ -166,7 +190,11 @@ class Worker:
                     needs_analysis=False,
                     status="completed",
                     progress=100,
-                    message="평가 완료 · 결과를 검토하고 확정하세요.",
+                    message=(
+                        "평가 완료 · 일부 근거를 건너뛰었습니다. 수집 제외 내역과 잠정 결과를 검토하세요."
+                        if any(s.get("collection_issues") for s in scopes.values())
+                        else "평가 완료 · 결과를 검토하고 확정하세요."
+                    ),
                     finished_at=now(),
                 )
                 current.pop("reanalysis_overrides", None)
@@ -179,6 +207,9 @@ class Worker:
                         "results": len(results),
                         "evidence_count": sum(map(len, evidence.values())),
                         "warnings": len(warnings),
+                        "skipped_requests": sum(
+                            len(s.get("collection_issues", [])) for s in scopes.values()
+                        ),
                     },
                 )
         except Exception as exc:
@@ -190,9 +221,9 @@ class Worker:
                     error = (
                         "평가자가 실행을 취소했습니다."
                         if cancelled
-                        else str(exc)
+                        else f"{phase}: {exc}"
                         if isinstance(exc, SourceError)
-                        else "처리 중 오류가 발생했습니다. 연계 데이터 형식과 설정을 확인하세요."
+                        else f"{phase}: {type(exc).__name__} 오류가 발생했습니다. 연계 데이터 형식과 설정을 확인하세요."
                     )
                     current.update(
                         status="cancelled" if cancelled else "failed",

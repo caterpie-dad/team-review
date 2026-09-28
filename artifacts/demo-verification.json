@@ -1,5 +1,5 @@
 {
-  "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+  "evaluation_id": "f73439ba-3188-4492-99d0-decadddb5283",
   "year": 2026,
   "members": 10,
   "projects": 6,
@@ -26,6 +26,8 @@
       "coverage": 100.0,
       "participating_weight": 60,
       "assessed_weight": 60,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -36,7 +38,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -47,7 +50,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -58,7 +62,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -69,7 +74,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -85,6 +91,8 @@
       "coverage": 100.0,
       "participating_weight": 45,
       "assessed_weight": 45,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -95,7 +103,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -106,7 +115,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -117,7 +127,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -133,6 +144,8 @@
       "coverage": 100.0,
       "participating_weight": 65,
       "assessed_weight": 65,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -143,7 +156,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -154,7 +168,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -165,7 +180,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -176,7 +192,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -192,6 +209,8 @@
       "coverage": 100.0,
       "participating_weight": 55,
       "assessed_weight": 55,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -202,7 +221,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -213,7 +233,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -224,7 +245,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -240,6 +262,8 @@
       "coverage": 100.0,
       "participating_weight": 75,
       "assessed_weight": 75,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -250,7 +274,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -261,7 +286,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -272,7 +298,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -283,7 +310,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -299,6 +327,8 @@
       "coverage": 100.0,
       "participating_weight": 40,
       "assessed_weight": 40,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-2",
@@ -309,7 +339,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -320,7 +351,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         }
       ]
     },
@@ -336,6 +368,8 @@
       "coverage": 100.0,
       "participating_weight": 55,
       "assessed_weight": 55,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-2",
@@ -346,7 +380,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -357,7 +392,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -368,7 +404,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         }
       ]
     },
@@ -384,6 +421,8 @@
       "coverage": 100.0,
       "participating_weight": 35,
       "assessed_weight": 35,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-3",
@@ -394,7 +433,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -405,7 +445,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         }
       ]
     },
@@ -421,6 +462,8 @@
       "coverage": 100.0,
       "participating_weight": 45,
       "assessed_weight": 45,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-3",
@@ -431,7 +474,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -442,7 +486,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -453,7 +498,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -469,6 +515,8 @@
       "coverage": 60.0,
       "participating_weight": 25,
       "assessed_weight": 15,
+      "collection_incomplete": false,
+      "provisional": true,
       "projects": [
         {
           "project_id": "project-4",
@@ -479,7 +527,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -490,7 +539,8 @@
             "validation": null,
             "collaboration": null
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-28T07:49:18.250758+00:00",
+  "started_at": "2026-09-28T08:17:45.195106+00:00",
   "steps": [
     {
       "name": "tests",
@@ -11,7 +11,7 @@
         "--junitxml=artifacts/full-suite.xml"
       ],
       "exit_code": 0,
-      "seconds": 156.73,
+      "seconds": 171.96,
       "log": "verification-logs/tests.log"
     },
     {
@@ -84,7 +84,7 @@
         "scripts/browser_members_check.py"
       ],
       "exit_code": 0,
-      "seconds": 17.56,
+      "seconds": 17.66,
       "log": "verification-logs/members-browser.log"
     },
     {
@@ -94,7 +94,7 @@
         "scripts/browser_drafts_check.py"
       ],
       "exit_code": 0,
-      "seconds": 13.25,
+      "seconds": 13.75,
       "log": "verification-logs/drafts-browser.log"
     },
     {
@@ -104,8 +104,18 @@
         "scripts/browser_sources_check.py"
       ],
       "exit_code": 0,
-      "seconds": 22.32,
+      "seconds": 22.23,
       "log": "verification-logs/sources-browser.log"
+    },
+    {
+      "name": "collection-browser",
+      "command": [
+        "/home/sung/workspace/team-review/.venv/bin/python",
+        "scripts/browser_collection_check.py"
+      ],
+      "exit_code": 0,
+      "seconds": 15.0,
+      "log": "verification-logs/collection-browser.log"
     },
     {
       "name": "editing-browser",
@@ -114,7 +124,7 @@
         "scripts/browser_editing_check.py"
       ],
       "exit_code": 0,
-      "seconds": 34.46,
+      "seconds": 34.35,
       "log": "verification-logs/editing-browser.log"
     },
     {
@@ -124,7 +134,7 @@
         "scripts/browser_analysis_check.py"
       ],
       "exit_code": 0,
-      "seconds": 12.8,
+      "seconds": 12.9,
       "log": "verification-logs/analysis-browser.log"
     },
     {
@@ -134,7 +144,7 @@
         "scripts/benchmark_analysis.py"
       ],
       "exit_code": 0,
-      "seconds": 10.39,
+      "seconds": 10.29,
       "log": "verification-logs/analysis-benchmark.log"
     },
     {
@@ -144,7 +154,7 @@
         "scripts/verify_docker.py"
       ],
       "exit_code": 0,
-      "seconds": 43.99,
+      "seconds": 43.88,
       "log": "verification-logs/docker.log"
     },
     {
@@ -164,20 +174,21 @@
     "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "app/analysis.py": "c41a89190c032f94293b0b391bfb0ea2fef1c476c5b988b8bda1ba153e317fdb",
     "app/config.py": "a26d96f86d6c4a45e391706d27b3509441af303bd80094b03912003a39cbc305",
-    "app/connectors.py": "fb901e0f4788643243fb97f5ec80a1eab297a4d209eb4fd3e2b458b672f87454",
+    "app/connectors.py": "91099ab875b5539180c3733a6d57b551ee330c0fdf9d20b371840385f4834a16",
     "app/db.py": "08fd9dc31818a465842d678321c29ab96758ee944924624f257f75deb905ad43",
     "app/demo.py": "39b7d908f8bab926199a69d30538c6f1d39c04208925a61a5c83e83cec0d2d15",
     "app/demo_efficiency.py": "3d3bfe31bfa6113cdddbebe73042eff0f3ee99d151ef64eee5af5fccf457bd88",
-    "app/domain.py": "fe286ca89775c0cc6f604259e92c31ae16c9784bff796567bd955b78fb81f267",
-    "app/main.py": "8ab2911bbcc64de8396161f68383120faabecbb1b5a4ec397dde9c41c49e48fd",
-    "app/revisions.py": "8b17ee2468fc1660bb95d8dd286d6460f176cc2cc07eb2d675e9065330a37db5",
+    "app/domain.py": "9db4b01abe851a7e927564cca733a588e4abb96ccdc82844307b328f928c0dcc",
+    "app/main.py": "c9fa0764296f62a9431158465cfadde74e40eab7942a3c3a4b879176e39c1e9a",
+    "app/revisions.py": "68df940a52677c38cadab5b517053d1f6f89e465fa8dbb6567f2ada4d56ff3d0",
     "app/settings.py": "a17975e9c576199cc88ae2579ed2687eb062e4432b5f0695f9cf0979d0808d42",
-    "app/static/app.js": "c482e100c681289887f3de461bf830b60d8dfdbb21db394ad23fb67a8c3bc19f",
+    "app/source_errors.py": "fbd1d301318bff1204f08d231175de4ce7d68587e339e46a0eadd372f9533914",
+    "app/static/app.js": "e837d228f6413afafb2516c2b753c5f9b60503375d018985a65db03c2ad3236a",
     "app/static/index.html": "4e8f1ff7e41165a058b93deb623982d41ae6604b65f97b48a10c6b2af776461c",
     "app/static/settings.js": "62c6d58a59b71254b1fa7b567b2b3fbcaad21b8ec0f37e2c85ae1b5f6822b785",
-    "app/static/style.css": "cf0de5e0f3cb6296dd51655fdd1b128193f87bb2e1ca3529f94884b61a77490e",
+    "app/static/style.css": "6aac42891fe1b43fe5d285cde7f0573f80de4a84a395e6d0938f27c40c50f349",
     "app/validation.py": "156c561eac6530b79713edd704d852fb37dc4a333453bfacd27a03569089433e",
-    "app/worker.py": "1546ad5d4ad355a3ace294c7629c228e032358ceb6f7787bddf5a582945d30aa",
+    "app/worker.py": "ee55de779e3de2b68d78a2250eaf5a2b69b55d9deb1730fb2760bfa1fb300686",
     "compose.demo.yaml": "626649d0a23f7d5bea8d522f9c29f720745649102054cafe20931ef063b624c2",
     "compose.yaml": "6a9331b4481547b4d3283ac574886b30d934534cc02f3daaa9c3203ee2c3e194",
     "config/demo.toml": "4789d213594653d0b000e4e805b4a2662d2087d18e20154ad8ec3eae4ae76d8e",
@@ -188,12 +199,13 @@
     "scripts/benchmark_analysis.py": "898a5f61cae3d337db7af61c705f285120fa3c5a4c992154409b5323ad586cff",
     "scripts/browser_analysis_check.py": "13e1a28a93f5ad99d3038a60cc1426fbf22d566f6df6c7dedf6bdff47d4457f4",
     "scripts/browser_check.py": "a38255059ff10914dd63ee8eaf7a22044c9c433afdceb2291ee9dccc35b3f7ae",
+    "scripts/browser_collection_check.py": "9849b2981c393f6b5ec4e949aa959792c89de9b47c875d8ac3c42c564080d408",
     "scripts/browser_drafts_check.py": "8c98f993896a80f6968f5289718a2f33e95eee7b014dc97873643ba4d71626e2",
     "scripts/browser_editing_check.py": "49914d73bc7d0e7e62816226f76d91238ef38ae7436aff3b3003bbd073344c52",
     "scripts/browser_members_check.py": "af843e36d347c1d277132feed5c37200f6481bb42fcb4f92debf17dd8772664f",
     "scripts/browser_sources_check.py": "d7d90b819a56f1ce9d6e42517af7e5aa7d119a0c8be410e423bb44dd0429392b",
     "scripts/dev.py": "d7bd8c5f01b191fdfa3f3571b1276ed7f808331ac40eda7cec4eb27774b9ff81",
-    "scripts/verify_all.py": "256a06fe7bd2b8e694e3e87253c1f22586451cbde7eab2a024cf79d96a684cf7",
+    "scripts/verify_all.py": "11101759e7d07450d92cc58a38dc30accbba00ce9093521adeb385ea444cd67d",
     "scripts/verify_demo.py": "6559a7ba41f7727001fe42a4454451cecefaad23167ee5fbc26d1d7ae2bd476f",
     "scripts/verify_docker.py": "a412da28fb1a1e507ee148f6a818c8945b782e239c91d1c137594c4023d4a639",
     "scripts/verify_docs.py": "5d02d7bb5bdb645f819db27f493eb15b79f4048bdf37a0fa9f01ffc729af2934",
@@ -202,6 +214,7 @@
     "tests/conftest.py": "fe5278ea9a6462c711637fdec62f0e16c010fc32ec8c55cc80d68a7fa946eaad",
     "tests/test_analysis.py": "d073fb00bc76e2f3e9cbb69804af9f2f2a4b0a36b41cd93883d5acd51e569ff3",
     "tests/test_api.py": "9b70ef344375f8d3dbb7f191714f16e7fea9b66cfd7b017ceb734e4fc31198b2",
+    "tests/test_collection_failures.py": "66e9d89c03a2db888426a6fafb33d88df86422f5239f6a3938778def2cc8c34b",
     "tests/test_connectors.py": "b469adc1c379d295ef877495fde25dd3f0dda42d121b600fd7b514eb67e401b4",
     "tests/test_domain.py": "50dbc509aa6e6b23a05aa8b28a596e4b733da9d1076a5f2f8d13fbf23233ce8f",
     "tests/test_drafts.py": "f690b573fb9dde7b52a010b624a4404ebd7ff6e6dea1afd6f64b6e6a49280268",
@@ -210,5 +223,5 @@
     "tests/test_member_compatibility.py": "582208b6da61540e845a9351ef6bd135b126378dfcac98077214ff9ce1568a72",
     "tests/test_sources.py": "07b65768d252a7d3670e876faf35c8cfc63d9bbd5a52a188e5bf3ba557d1d1d4"
   },
-  "finished_at": "2026-09-28T07:54:29.948082+00:00"
+  "finished_at": "2026-09-28T08:23:27.434516+00:00"
 }

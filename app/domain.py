@@ -263,6 +263,12 @@ def aggregate(ev):
                     "score": round(score, 2) if score is not None else None,
                     "scores": scores,
                     "weight": weight,
+                    "collection_incomplete": bool(
+                        result.get("collection_incomplete")
+                        or ev.get("scopes", {})
+                        .get(result["project_id"], {})
+                        .get("collection_incomplete")
+                    ),
                 }
             )
         raw_score = weighted / known if known else None
@@ -285,6 +291,11 @@ def aggregate(ev):
                 "coverage": round(known / denominator * 100, 1) if denominator else 0,
                 "participating_weight": denominator,
                 "assessed_weight": known,
+                "collection_incomplete": any(
+                    p["collection_incomplete"] for p in details
+                ),
+                "provisional": known < denominator
+                or any(p["collection_incomplete"] for p in details),
                 "projects": details,
             }
         )

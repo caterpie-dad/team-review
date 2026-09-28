@@ -1123,6 +1123,22 @@ dialog pre {
 .source-list button {
   flex-shrink: 0;
 }
+.collection-issues {
+  overflow-wrap: anywhere;
+}
+.collection-issues p {
+  margin: 8px 0;
+}
+.collection-issue {
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
+}
+.collection-issue code {
+  display: block;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
 
 .criterion-edit {
   padding: 18px 0;

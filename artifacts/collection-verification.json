@@ -1,0 +1,18 @@
+{
+  "mode": "isolated synthetic HTTP services",
+  "browser": "134.0.6998.35",
+  "members": 10,
+  "projects": 6,
+  "results": 30,
+  "page_errors": [],
+  "checks": [
+    "409 empty repository skipped",
+    "403 repository and 404 document skipped",
+    "diagnostic path/status/reason/action visible during execution",
+    "provider secrets not echoed",
+    "other sources and projects complete",
+    "affected scores provisional without penalizing unaffected projects",
+    "diagnostics survive reload",
+    "mobile layout"
+  ]
+}

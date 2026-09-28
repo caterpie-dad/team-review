@@ -895,6 +895,8 @@ def create_app(cfg=None, db_path=None):
                 "project_score",
                 "project_weight",
                 *DIMS,
+                "provisional",
+                "collection_incomplete",
             ]
         )
         for row in aggregate(ev):
@@ -915,6 +917,8 @@ def create_app(cfg=None, db_path=None):
                             project["score"],
                             project["weight"],
                             *[project["scores"][d] for d in DIMS],
+                            row["provisional"],
+                            project["collection_incomplete"],
                         ]
                     ]
                 )

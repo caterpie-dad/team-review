@@ -113,6 +113,13 @@ def revise_evaluation(ev, body, members, rubric, policy):
     if policy:
         ev["level_policy"] = copy.deepcopy(policy)
     active_pids = {p["id"] for p in projects}
+    removed_skips = {
+        f"{old_projects[pid]['name']}: 수집 제외 ({issue['stage']}): {issue['message']}"
+        for pid, scope in ev.get("scopes", {}).items()
+        if pid in old_projects and (pid not in active_pids or pid in changed_scope)
+        for issue in scope.get("collection_issues", [])
+    }
+    ev["warnings"] = [w for w in ev.get("warnings", []) if w not in removed_skips]
     # Retain only evidence in the current declared scope. Prior copies live in the audit version.
     for key in ("evidence", "scopes"):
         ev[key] = {

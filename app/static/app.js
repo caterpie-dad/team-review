@@ -522,7 +522,7 @@ function detailView() {
           }" data-action="select-result-member" data-id="${esc(
             m.member_id
           )}"><span><strong>${esc(m.name)}</strong><div class="cell-sub">${
-            m.coverage < 100 ? "잠정 · " : ""
+            m.provisional || m.coverage < 100 ? "잠정 · " : ""
           }${m.level ? m.level + " · " : ""}충족률 ${
             m.coverage
           }%</div></span><span class="score-bubble">${score(
@@ -540,7 +540,9 @@ function detailView() {
     }개 프로젝트 참여 · 평가 가능한 가중치 ${selected.assessed_weight} / ${
       selected.participating_weight
     }<br>${
-      selected.coverage < 100
+      selected.collection_incomplete
+        ? "일부 근거를 수집하지 못한 잠정 종합점수입니다. 충족률은 자료 수집 완전성을 뜻하지 않습니다."
+        : selected.coverage < 100
         ? "판정 보류 항목이 있어 잠정 종합점수입니다."
         : "모든 참여 프로젝트가 평가되었습니다."
     }</p></div><div style="text-align:right"><div class="help">종합점수</div><div class="score">${score(
@@ -568,7 +570,7 @@ function detailView() {
         ""
       )}</nav><div class="panel"><header class="panel-head"><div><h2>${esc(
       project.name
-    )}</h2><p class="help" style="margin-top:6px">${project.start} — ${
+    )}${pscore?.collection_incomplete ? ' <span class="pill">잠정 · 일부 근거 미수집</span>' : ""}</h2><p class="help" style="margin-top:6px">${project.start} — ${
       project.end
     } · 프로젝트 가중치 ${project.weight}%</p></div><div class="score">${score(
       pscore?.score
@@ -717,7 +719,7 @@ function detailView() {
       e.status !== "running"
         ? '<button class="small" data-action="clone">복제</button>'
         : ""
-    }</div></div>${e.demo ? demoBanner() : ""}${
+    }</div></div>${e.demo ? demoBanner() : ""}<div id="collection-issues">${collectionIssueBlock(e)}</div>${
       e.status === "draft" && e.draft_issues?.length
         ? `<div class="banner" role="status"><strong>초안이 저장되었습니다. 평가 시작 전에 다음 항목을 확인하세요.</strong><ul>${e.draft_issues.map((message) => `<li>${esc(message)}</li>`).join("")}</ul><button class="small" data-action="edit-evaluation">설정 보완하기</button></div>`
         : ""
@@ -768,6 +770,17 @@ function adjustmentModal(key) {
     }<button type="button" data-action="close-modal">취소</button><button class="primary" type="submit">조정 반영</button></div></form>`
   );
 }
+function collectionIssues(e) {
+  return (e.projects || []).flatMap(p =>
+    (e.scopes?.[p.id]?.collection_issues || []).map(issue => ({ ...issue, project: p.name }))
+  );
+}
+function collectionIssueBlock(e) {
+  const issues = collectionIssues(e);
+  if (!issues.length) return "";
+  const incomplete = issues.some(issue => issue.code !== "empty_repository");
+  return `<section class="banner collection-issues" aria-label="수집 제외 내역"><strong>수집 제외 ${issues.length}건 · ${e.status === "running" ? "다른 근거로 평가를 계속하고 있습니다" : ["completed", "finalized"].includes(e.status) ? "수집 가능한 근거로 평가했습니다" : "일부 근거를 수집하지 못했습니다"}</strong><p class="help">${incomplete ? "일부 경로를 확인하지 못해 결과는 잠정입니다. 확보한 근거가 전혀 없는 항목은 판정 보류합니다." : "빈 저장소는 분석할 커밋이 없어 건너뛰었습니다."} 누락 자체를 감점하지 않습니다.</p><details open><summary>원인과 요청 경로 보기</summary>${issues.map(issue => `<article class="collection-issue"><strong>${esc(issue.project)} · ${esc(issue.stage)} · ${issue.status ? "HTTP " + esc(issue.status) : esc(issue.code)}</strong><p>${esc(issue.reason)}</p><code>${esc(issue.method)} ${esc(issue.url)}</code><p class="help">${esc(issue.hint)} · 요청 ${issue.attempts}회</p></article>`).join("")}</details></section>`;
+}
 function warningBlock(warnings) {
   return warnings.length ? `<div class="banner"><details><summary>수집 및 귀속 경고 ${warnings.length}건 · 결과 검토 시 확인하세요</summary><ul>${warnings.map(w => `<li>${esc(w)}</li>`).join("")}</ul></details></div>` : "";
 }
@@ -785,6 +798,12 @@ function updateRunningDetail(previous) {
     $("span", bar).style.width = `${e.progress}%`;
   }
   setText('[data-action="cancel"]', e.cancel_requested ? "취소 요청됨" : "실행 취소");
+  if (JSON.stringify(collectionIssues(previous)) !== JSON.stringify(collectionIssues(e))) {
+    const container = $("#collection-issues");
+    const open = $("details", container)?.open ?? true;
+    container.innerHTML = collectionIssueBlock(e);
+    if ($("details", container)) $("details", container).open = open;
+  }
   if (JSON.stringify(previous.warnings) !== JSON.stringify(e.warnings)) {
     const container = $("#evaluation-warnings");
     if ($("details", container) && e.warnings?.length) {

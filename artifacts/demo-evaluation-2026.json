@@ -123,13 +123,13 @@
       ]
     }
   ],
-  "id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
+  "id": "f73439ba-3188-4492-99d0-decadddb5283",
   "status": "completed",
-  "created_at": "2026-09-28T07:53:58.699726+00:00",
+  "created_at": "2026-09-28T08:22:56.297903+00:00",
   "revision": 112,
   "progress": 100,
   "demo": true,
-  "updated_at": "2026-09-28T07:54:00.743069+00:00",
+  "updated_at": "2026-09-28T08:22:58.347068+00:00",
   "analysis_policy": {
     "github_strategy": "adaptive",
     "min_consecutive_commits": 4,
@@ -219,7 +219,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.467396+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.124019+00:00",
       "project_id": "project-1",
       "member_id": "T001"
     },
@@ -293,7 +293,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.493577+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.149822+00:00",
       "project_id": "project-1",
       "member_id": "T002"
     },
@@ -367,7 +367,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.522586+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.177057+00:00",
       "project_id": "project-1",
       "member_id": "T003"
     },
@@ -441,7 +441,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.550279+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.204036+00:00",
       "project_id": "project-1",
       "member_id": "T004"
     },
@@ -515,7 +515,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.579554+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.232162+00:00",
       "project_id": "project-1",
       "member_id": "T005"
     },
@@ -589,7 +589,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.608880+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.260299+00:00",
       "project_id": "project-2",
       "member_id": "T003"
     },
@@ -663,7 +663,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.638305+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.288578+00:00",
       "project_id": "project-2",
       "member_id": "T004"
     },
@@ -737,7 +737,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.667520+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.316169+00:00",
       "project_id": "project-2",
       "member_id": "T005"
     },
@@ -811,7 +811,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.698561+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.348562+00:00",
       "project_id": "project-2",
       "member_id": "T006"
     },
@@ -885,7 +885,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.729161+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.376316+00:00",
       "project_id": "project-2",
       "member_id": "T007"
     },
@@ -959,7 +959,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.763005+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.408020+00:00",
       "project_id": "project-3",
       "member_id": "T005"
     },
@@ -1033,7 +1033,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.791485+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.436027+00:00",
       "project_id": "project-3",
       "member_id": "T006"
     },
@@ -1107,7 +1107,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.823796+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.464839+00:00",
       "project_id": "project-3",
       "member_id": "T007"
     },
@@ -1181,7 +1181,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.854334+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.492434+00:00",
       "project_id": "project-3",
       "member_id": "T008"
     },
@@ -1255,7 +1255,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.884274+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.521659+00:00",
       "project_id": "project-3",
       "member_id": "T009"
     },
@@ -1329,7 +1329,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.915265+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.549440+00:00",
       "project_id": "project-4",
       "member_id": "T007"
     },
@@ -1403,7 +1403,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.943769+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.578387+00:00",
       "project_id": "project-4",
       "member_id": "T008"
     },
@@ -1477,7 +1477,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:53:59.972433+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.605825+00:00",
       "project_id": "project-4",
       "member_id": "T009"
     },
@@ -1551,7 +1551,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.001207+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.634931+00:00",
       "project_id": "project-4",
       "member_id": "T010"
     },
@@ -1625,7 +1625,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.031929+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.666529+00:00",
       "project_id": "project-4",
       "member_id": "T001"
     },
@@ -1699,7 +1699,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.066053+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.697229+00:00",
       "project_id": "project-5",
       "member_id": "T009"
     },
@@ -1750,7 +1750,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.085298+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.715819+00:00",
       "project_id": "project-5",
       "member_id": "T010"
     },
@@ -1824,7 +1824,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.113564+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.744785+00:00",
       "project_id": "project-5",
       "member_id": "T001"
     },
@@ -1898,7 +1898,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.141662+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.771916+00:00",
       "project_id": "project-5",
       "member_id": "T002"
     },
@@ -1972,7 +1972,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.171329+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.804366+00:00",
       "project_id": "project-5",
       "member_id": "T003"
     },
@@ -2046,7 +2046,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.204455+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.835096+00:00",
       "project_id": "project-6",
       "member_id": "T001"
     },
@@ -2120,7 +2120,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.233990+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.865060+00:00",
       "project_id": "project-6",
       "member_id": "T002"
     },
@@ -2194,7 +2194,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.265954+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.894852+00:00",
       "project_id": "project-6",
       "member_id": "T003"
     },
@@ -2268,7 +2268,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.296836+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.924796+00:00",
       "project_id": "project-6",
       "member_id": "T004"
     },
@@ -2342,7 +2342,7 @@
       },
       "model": "synthetic-judge-v1",
       "rubric_version": "1.0",
-      "analyzed_at": "2026-09-28T07:54:00.327762+00:00",
+      "analyzed_at": "2026-09-28T08:22:57.954296+00:00",
       "project_id": "project-6",
       "member_id": "T005"
     }
@@ -3439,7 +3439,8 @@
         "1003",
         "1004",
         "1005"
-      ]
+      ],
+      "collection_incomplete": false
     },
     "project-2": {
       "repos": [
@@ -3456,7 +3457,8 @@
         "1105",
         "1106",
         "1107"
-      ]
+      ],
+      "collection_incomplete": false
     },
     "project-3": {
       "repos": [
@@ -3473,7 +3475,8 @@
         "1207",
         "1208",
         "1209"
-      ]
+      ],
+      "collection_incomplete": false
     },
     "project-4": {
       "repos": [
@@ -3490,7 +3493,8 @@
         "1308",
         "1309",
         "1310"
-      ]
+      ],
+      "collection_incomplete": false
     },
     "project-5": {
       "repos": [
@@ -3507,7 +3511,8 @@
         "1403",
         "1409",
         "1410"
-      ]
+      ],
+      "collection_incomplete": false
     },
     "project-6": {
       "repos": [
@@ -3524,7 +3529,8 @@
         "1503",
         "1504",
         "1505"
-      ]
+      ],
+      "collection_incomplete": false
     }
   },
   "warnings": [
@@ -3703,8 +3709,8 @@
     ],
     "anchors": "0–19 심각한 결함 / 20–39 개선 필요 / 40–59 기본 충족 / 60–79 견고함 / 80–100 탁월함. 관찰 불가=null."
   },
-  "started_at": "2026-09-28T07:53:58.710822+00:00",
-  "finished_at": "2026-09-28T07:54:00.340197+00:00",
+  "started_at": "2026-09-28T08:22:56.308834+00:00",
+  "finished_at": "2026-09-28T08:22:57.966789+00:00",
   "model": "synthetic-judge-v1",
   "level_policy": {
     "version": "1.0",
@@ -3728,6 +3734,8 @@
       "coverage": 100.0,
       "participating_weight": 60,
       "assessed_weight": 60,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -3738,7 +3746,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -3749,7 +3758,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -3760,7 +3770,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -3771,7 +3782,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -3787,6 +3799,8 @@
       "coverage": 100.0,
       "participating_weight": 45,
       "assessed_weight": 45,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -3797,7 +3811,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -3808,7 +3823,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -3819,7 +3835,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -3835,6 +3852,8 @@
       "coverage": 100.0,
       "participating_weight": 65,
       "assessed_weight": 65,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -3845,7 +3864,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -3856,7 +3876,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -3867,7 +3888,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -3878,7 +3900,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -3894,6 +3917,8 @@
       "coverage": 100.0,
       "participating_weight": 55,
       "assessed_weight": 55,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -3904,7 +3929,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -3915,7 +3941,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -3926,7 +3953,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -3942,6 +3970,8 @@
       "coverage": 100.0,
       "participating_weight": 75,
       "assessed_weight": 75,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-1",
@@ -3952,7 +3982,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 25
+          "weight": 25,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-2",
@@ -3963,7 +3994,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -3974,7 +4006,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-6",
@@ -3985,7 +4018,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -4001,6 +4035,8 @@
       "coverage": 100.0,
       "participating_weight": 40,
       "assessed_weight": 40,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-2",
@@ -4011,7 +4047,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -4022,7 +4059,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         }
       ]
     },
@@ -4038,6 +4076,8 @@
       "coverage": 100.0,
       "participating_weight": 55,
       "assessed_weight": 55,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-2",
@@ -4048,7 +4088,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-3",
@@ -4059,7 +4100,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -4070,7 +4112,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         }
       ]
     },
@@ -4086,6 +4129,8 @@
       "coverage": 100.0,
       "participating_weight": 35,
       "assessed_weight": 35,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-3",
@@ -4096,7 +4141,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -4107,7 +4153,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         }
       ]
     },
@@ -4123,6 +4170,8 @@
       "coverage": 100.0,
       "participating_weight": 45,
       "assessed_weight": 45,
+      "collection_incomplete": false,
+      "provisional": false,
       "projects": [
         {
           "project_id": "project-3",
@@ -4133,7 +4182,8 @@
             "validation": 38,
             "collaboration": 66
           },
-          "weight": 20
+          "weight": 20,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-4",
@@ -4144,7 +4194,8 @@
             "validation": 90,
             "collaboration": 82
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -4155,7 +4206,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     },
@@ -4171,6 +4223,8 @@
       "coverage": 60.0,
       "participating_weight": 25,
       "assessed_weight": 15,
+      "collection_incomplete": false,
+      "provisional": true,
       "projects": [
         {
           "project_id": "project-4",
@@ -4181,7 +4235,8 @@
             "validation": 78,
             "collaboration": 79
           },
-          "weight": 15
+          "weight": 15,
+          "collection_incomplete": false
         },
         {
           "project_id": "project-5",
@@ -4192,7 +4247,8 @@
             "validation": null,
             "collaboration": null
           },
-          "weight": 10
+          "weight": 10,
+          "collection_incomplete": false
         }
       ]
     }
@@ -4200,8 +4256,8 @@
   "audit": [
     {
       "id": 4,
-      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
-      "at": "2026-09-28T07:54:00.743766+00:00",
+      "evaluation_id": "f73439ba-3188-4492-99d0-decadddb5283",
+      "at": "2026-09-28T08:22:58.347869+00:00",
       "action": "adjustment",
       "data": {
         "member_id": "T001",
@@ -4237,19 +4293,20 @@
     },
     {
       "id": 3,
-      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
-      "at": "2026-09-28T07:54:00.340908+00:00",
+      "evaluation_id": "f73439ba-3188-4492-99d0-decadddb5283",
+      "at": "2026-09-28T08:22:57.967471+00:00",
       "action": "completed",
       "data": {
         "results": 30,
         "evidence_count": 59,
-        "warnings": 1
+        "warnings": 1,
+        "skipped_requests": 0
       }
     },
     {
       "id": 2,
-      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
-      "at": "2026-09-28T07:53:58.710925+00:00",
+      "evaluation_id": "f73439ba-3188-4492-99d0-decadddb5283",
+      "at": "2026-09-28T08:22:56.308931+00:00",
       "action": "started",
       "data": {
         "model": "synthetic-judge-v1",
@@ -4259,8 +4316,8 @@
     },
     {
       "id": 1,
-      "evaluation_id": "f1585f8c-0a39-47fa-99b3-aade4d0b4186",
-      "at": "2026-09-28T07:53:58.699775+00:00",
+      "evaluation_id": "f73439ba-3188-4492-99d0-decadddb5283",
+      "at": "2026-09-28T08:22:56.297964+00:00",
       "action": "demo_seeded",
       "data": {
         "members": 10,
