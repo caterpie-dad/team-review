@@ -1,0 +1,24 @@
+services:
+  dashboard:
+    build: .
+    image: trace-team-review:local
+    restart: unless-stopped
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:${PORT:-8080}:8080"
+    environment:
+      TEAM_REVIEW_CONFIG: /config/settings.toml
+      DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?Set DASHBOARD_PASSWORD in .env}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      CONFLUENCE_USERNAME: ${CONFLUENCE_USERNAME:-}
+      CONFLUENCE_TOKEN: ${CONFLUENCE_TOKEN:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+    volumes:
+      - ./config/settings.toml:/config/settings.toml:ro
+      - review-data:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: [/tmp]
+volumes:
+  review-data:

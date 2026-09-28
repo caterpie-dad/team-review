@@ -1,0 +1,18 @@
+{
+  "mode": "isolated Docker projects with synthetic data",
+  "members": 10,
+  "projects": 6,
+  "checks": [
+    "image build and health",
+    "password and anonymous denial",
+    "full evaluation and adjustment/export",
+    "desktop/mobile end-to-end",
+    "container recreation preserves evaluations and settings",
+    "consistent SQLite backup and integrity",
+    "judgment cache included in backup",
+    "database and settings restore to a new volume",
+    "production Compose starts without seed capability",
+    "three connections work after restore"
+  ],
+  "existing_workspace_modified": false
+}

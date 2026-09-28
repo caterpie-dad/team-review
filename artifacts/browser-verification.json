@@ -1,0 +1,33 @@
+{
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "desktop": [
+    1440,
+    1100
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "checks": [
+    "login",
+    "10 members",
+    "multiple identities",
+    "rubric",
+    "create evaluation",
+    "select participants",
+    "weights",
+    "native weight slider updates numeric input and total",
+    "start",
+    "progress",
+    "results",
+    "adjustment",
+    "evidence",
+    "audit",
+    "download",
+    "finalize",
+    "reopen",
+    "responsive",
+    "logout"
+  ]
+}

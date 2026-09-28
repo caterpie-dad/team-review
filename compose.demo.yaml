@@ -1,0 +1,35 @@
+services:
+  dashboard:
+    build: .
+    image: trace-team-review:local
+    restart: unless-stopped
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:${PORT:-8080}:8080"
+    environment:
+      TEAM_REVIEW_CONFIG: /config/demo.toml
+      DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?Set DASHBOARD_PASSWORD in .env}
+    volumes:
+      - ./config/demo.toml:/config/demo.toml:ro
+      - demo-data:/data
+    depends_on:
+      fixtures:
+        condition: service_healthy
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: [/tmp]
+  fixtures:
+    image: trace-team-review:local
+    pull_policy: never
+    command: ["uvicorn", "app.demo:create_demo_app", "--factory", "--host", "0.0.0.0", "--port", "9001"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9001/health', timeout=3)"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: [/tmp]
+volumes:
+  demo-data:

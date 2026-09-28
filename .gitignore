@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+data/
+config/settings.toml
+.env
+backups/
+*.sqlite*
+artifacts/*.png
+artifacts/*backup*.sqlite3

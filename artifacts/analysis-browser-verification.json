@@ -1,0 +1,12 @@
+{
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "mode": "isolated synthetic HTTP services",
+  "checks": [
+    "48 commits from 2 authors evaluated",
+    "efficiency metrics shown",
+    "consolidated and original evidence accessible",
+    "clone reuses judgments with zero new LLM calls",
+    "mobile layout"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "service_tests": {
+    "github": {
+      "ok": true,
+      "message": "연결 성공 · 사용자 인증 확인 (개별 근거 접근 권한은 평가 시 확인)",
+      "elapsed_ms": 50
+    },
+    "confluence": {
+      "ok": true,
+      "message": "연결 성공 · 사용자 인증 확인 (개별 근거 접근 권한은 평가 시 확인)",
+      "elapsed_ms": 6
+    },
+    "llm": {
+      "ok": true,
+      "message": "연결 성공 · 모델 응답 확인",
+      "elapsed_ms": 6
+    }
+  },
+  "evaluations_preserved": 4,
+  "settings_asset": true
+}

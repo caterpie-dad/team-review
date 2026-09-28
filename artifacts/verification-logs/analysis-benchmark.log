@@ -1,0 +1,74 @@
+{
+  "mode": "synthetic HTTP services; no real model quality or latency claim",
+  "token_note": "Mock API does not report token usage. Counts are characters, not tokens.",
+  "scenarios": [
+    {
+      "commits": 48,
+      "authors": 1,
+      "scenarios": {
+        "diff": {
+          "retained_evidence": 48,
+          "warnings": [],
+          "original_content_chars": 151351,
+          "selected_content_chars": 151351,
+          "llm_requests": 5,
+          "llm_request_chars_including_prompts": 188888,
+          "consolidated_groups": 0,
+          "repeat_llm_requests": 0,
+          "repeat_cache_hits": 5,
+          "elapsed_seconds_mock_services": 2.432,
+          "actual_tokens": null
+        },
+        "adaptive": {
+          "retained_evidence": 50,
+          "warnings": [],
+          "original_content_chars": 151351,
+          "selected_content_chars": 20807,
+          "llm_requests": 1,
+          "llm_request_chars_including_prompts": 25423,
+          "consolidated_groups": 2,
+          "repeat_llm_requests": 0,
+          "repeat_cache_hits": 1,
+          "elapsed_seconds_mock_services": 2.29,
+          "actual_tokens": null
+        }
+      },
+      "quality_validation": "Not measured by the synthetic LLM; compare real-model judgments before operational scoring.",
+      "content_reduction_percent": 86.3
+    },
+    {
+      "commits": 48,
+      "authors": 2,
+      "scenarios": {
+        "diff": {
+          "retained_evidence": 48,
+          "warnings": [],
+          "original_content_chars": 151351,
+          "selected_content_chars": 151351,
+          "llm_requests": 6,
+          "llm_request_chars_including_prompts": 190496,
+          "consolidated_groups": 0,
+          "repeat_llm_requests": 0,
+          "repeat_cache_hits": 6,
+          "elapsed_seconds_mock_services": 2.488,
+          "actual_tokens": null
+        },
+        "adaptive": {
+          "retained_evidence": 50,
+          "warnings": [],
+          "original_content_chars": 151351,
+          "selected_content_chars": 20807,
+          "llm_requests": 2,
+          "llm_request_chars_including_prompts": 27031,
+          "consolidated_groups": 2,
+          "repeat_llm_requests": 0,
+          "repeat_cache_hits": 2,
+          "elapsed_seconds_mock_services": 2.369,
+          "actual_tokens": null
+        }
+      },
+      "quality_validation": "Not measured by the synthetic LLM; compare real-model judgments before operational scoring.",
+      "content_reduction_percent": 86.3
+    }
+  ]
+}

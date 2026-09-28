@@ -1,0 +1,500 @@
+{
+  "date": "2026-09-27",
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "mode": "synthetic LLM",
+  "members": [
+    {
+      "member_id": "T001",
+      "name": "김서연",
+      "score": 65.04,
+      "raw_score": 72.27,
+      "career_years": 9,
+      "level": "CL3",
+      "level_weight": 0.9,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 60,
+      "assessed_weight": 60,
+      "projects": [
+        {
+          "project_id": "project-1",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 25
+        },
+        {
+          "project_id": "project-4",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 15
+        },
+        {
+          "project_id": "project-5",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 10
+        },
+        {
+          "project_id": "project-6",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T002",
+      "name": "이도윤",
+      "score": 63.46,
+      "raw_score": 63.46,
+      "career_years": 4,
+      "level": "CL2",
+      "level_weight": 1,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 45,
+      "assessed_weight": 45,
+      "projects": [
+        {
+          "project_id": "project-1",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 25
+        },
+        {
+          "project_id": "project-5",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 10
+        },
+        {
+          "project_id": "project-6",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T003",
+      "name": "박지우",
+      "score": 75.39,
+      "raw_score": 75.39,
+      "career_years": 8,
+      "level": "CL2",
+      "level_weight": 1,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 65,
+      "assessed_weight": 65,
+      "projects": [
+        {
+          "project_id": "project-1",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 25
+        },
+        {
+          "project_id": "project-2",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-5",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 10
+        },
+        {
+          "project_id": "project-6",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T004",
+      "name": "최하준",
+      "score": 60.87,
+      "raw_score": 67.64,
+      "career_years": 9,
+      "level": "CL3",
+      "level_weight": 0.9,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 55,
+      "assessed_weight": 55,
+      "projects": [
+        {
+          "project_id": "project-1",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 25
+        },
+        {
+          "project_id": "project-2",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-6",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T005",
+      "name": "정수빈",
+      "score": 62.53,
+      "raw_score": 69.47,
+      "career_years": 12,
+      "level": "CL3",
+      "level_weight": 0.9,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 75,
+      "assessed_weight": 75,
+      "projects": [
+        {
+          "project_id": "project-1",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 25
+        },
+        {
+          "project_id": "project-2",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-3",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-6",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T006",
+      "name": "강민준",
+      "score": 55.76,
+      "raw_score": 61.95,
+      "career_years": 16,
+      "level": "CL3",
+      "level_weight": 0.9,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 40,
+      "assessed_weight": 40,
+      "projects": [
+        {
+          "project_id": "project-2",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-3",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "member_id": "T007",
+      "name": "조유진",
+      "score": 55.99,
+      "raw_score": 69.98,
+      "career_years": 17,
+      "level": "CL4",
+      "level_weight": 0.8,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 55,
+      "assessed_weight": 55,
+      "projects": [
+        {
+          "project_id": "project-2",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-3",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-4",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "member_id": "T008",
+      "name": "윤지호",
+      "score": 50.96,
+      "raw_score": 63.7,
+      "career_years": 20,
+      "level": "CL4",
+      "level_weight": 0.8,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 35,
+      "assessed_weight": 35,
+      "projects": [
+        {
+          "project_id": "project-3",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-4",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "member_id": "T009",
+      "name": "장다은",
+      "score": 67.61,
+      "raw_score": 67.61,
+      "career_years": 6,
+      "level": "CL2",
+      "level_weight": 1,
+      "level_applied": true,
+      "coverage": 100,
+      "participating_weight": 45,
+      "assessed_weight": 45,
+      "projects": [
+        {
+          "project_id": "project-3",
+          "score": 49.7,
+          "scores": {
+            "quality": 53,
+            "complexity": 47,
+            "validation": 38,
+            "collaboration": 66
+          },
+          "weight": 20
+        },
+        {
+          "project_id": "project-4",
+          "score": 87.1,
+          "scores": {
+            "quality": 88,
+            "complexity": 86,
+            "validation": 90,
+            "collaboration": 82
+          },
+          "weight": 15
+        },
+        {
+          "project_id": "project-5",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "member_id": "T010",
+      "name": "임현우",
+      "score": 66.78,
+      "raw_score": 74.2,
+      "career_years": 14,
+      "level": "CL3",
+      "level_weight": 0.9,
+      "level_applied": true,
+      "coverage": 60,
+      "participating_weight": 25,
+      "assessed_weight": 15,
+      "projects": [
+        {
+          "project_id": "project-4",
+          "score": 74.2,
+          "scores": {
+            "quality": 76,
+            "complexity": 65,
+            "validation": 78,
+            "collaboration": 79
+          },
+          "weight": 15
+        },
+        {
+          "project_id": "project-5",
+          "score": null,
+          "scores": {
+            "quality": null,
+            "complexity": null,
+            "validation": null,
+            "collaboration": null
+          },
+          "weight": 10
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "missing/null identity lists render and edit",
+    "legacy member add IDs/save/reopen",
+    "versioned dashboard assets",
+    "identity add/Enter/remove/duplicate",
+    "member edit/save/reopen",
+    "new member save",
+    "Git email removed",
+    "career CL preview",
+    "weighted aggregate",
+    "mobile layout"
+  ]
+}

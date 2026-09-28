@@ -1,0 +1,51 @@
+[app]
+demo = false
+[auth]
+password = "env:DASHBOARD_PASSWORD"
+session_hours = 8
+secure_cookie = false # HTTPS reverse proxy 운영에서는 true
+# public_url = "https://review.company.example" # 역방향 프록시의 외부 Origin
+[storage]
+path = "/data/review.sqlite3"
+[github]
+web_url = "https://github.com"
+api_url = "https://api.github.com"
+token = "env:GITHUB_TOKEN"
+auth = "bearer"
+[confluence]
+web_url = "https://your-company.atlassian.net/wiki"
+api_url = "https://your-company.atlassian.net/wiki/rest/api"
+auth = "basic" # Cloud: basic(email+API token), Data Center: bearer(PAT)
+username = "env:CONFLUENCE_USERNAME"
+token = "env:CONFLUENCE_TOKEN"
+[llm]
+api_url = "https://your-llm-gateway.example/v1"
+key = "env:LLM_API_KEY"
+model = "your-model"
+json_mode = true
+[limits]
+request_timeout = 30
+llm_timeout = 120
+max_pages = 500
+max_versions = 200
+max_commits = 1000
+max_repos = 100
+max_api_pages = 100
+max_chars = 16000
+llm_batch_chars = 32000
+
+[evaluation]
+# 종합점수 = 프로젝트 가중평균 × CL 계수. 평가 시작 시 보존합니다.
+level_weights = { CL2 = 1.0, CL3 = 0.9, CL4 = 0.8 }
+
+[analysis]
+# adaptive: 검증된 동일 작성자 연속 구간의 최종 파일 + 순변경 + 중간 변경을 통합
+# diff: 기존 커밋별 diff 분석. 원본 근거는 두 모드 모두 보존합니다.
+github_strategy = "adaptive"
+min_consecutive_commits = 4
+max_consecutive_commits = 32
+min_savings_ratio = 0.2
+max_snapshot_bytes = 128000
+max_snapshot_files = 20
+cache_enabled = true
+cache_max_entries = 2000

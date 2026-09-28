@@ -1,0 +1,16 @@
+{
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "mode": "isolated synthetic HTTP services",
+  "checks": [
+    "blank evaluation and three project names save",
+    "no members or sources save",
+    "empty dates and incomplete weights save",
+    "reload and partial edit retain inputs",
+    "start rejects incomplete draft with Korean field labels",
+    "complete draft then evaluate",
+    "second evaluation start disabled while running",
+    "cancel and retry through dashboard",
+    "delete unfinished draft from editor"
+  ]
+}

@@ -1,0 +1,136 @@
+ Image trace-team-review:verify-f6ef4d9ee9 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 561B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 683B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 132B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.57kB done
+#5 DONE 0.0s
+
+#6 [1/6] FROM docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a
+#6 resolve docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a 0.0s done
+#6 DONE 0.0s
+
+#7 [2/6] WORKDIR /app
+#7 CACHED
+
+#8 [4/6] RUN pip install --no-cache-dir -r requirements.txt && useradd --uid 10001 --create-home reviewer && mkdir /data && chown reviewer:reviewer /data
+#8 CACHED
+
+#9 [5/6] COPY app ./app
+#9 CACHED
+
+#10 [3/6] COPY requirements.txt .
+#10 CACHED
+
+#11 [6/6] COPY scripts/backup.py ./scripts/backup.py
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:0578de5d106c14d9284056b86f916899549b55d359b3d10f9281c040c69ac523 0.0s done
+#12 exporting config sha256:89dd65fa1f2bfdcf6e77c4452dae6a4a2a01a678d18cef9a51d427cfe8351e05 0.0s done
+#12 exporting attestation manifest sha256:23eaf30812b9470463b08ce84492d2c658307076f5bfe64343190d8d41b2ca20
+#12 exporting attestation manifest sha256:23eaf30812b9470463b08ce84492d2c658307076f5bfe64343190d8d41b2ca20 0.0s done
+#12 exporting manifest list sha256:502827262560dad9bc842697335b9305c32c0ec8dd09aef951f40dadcb09d041 0.0s done
+#12 naming to docker.io/library/trace-team-review:verify-f6ef4d9ee9 done
+#12 unpacking to docker.io/library/trace-team-review:verify-f6ef4d9ee9 done
+#12 DONE 0.1s
+
+#13 resolving provenance for metadata file
+#13 DONE 0.0s
+ Image trace-team-review:verify-f6ef4d9ee9 Built 
+ Network trace-check-f6ef4d9ee9_default Creating 
+ Network trace-check-f6ef4d9ee9_default Created 
+ Volume trace-check-f6ef4d9ee9_demo-data Creating 
+ Volume trace-check-f6ef4d9ee9_demo-data Created 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Creating 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Created 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Creating 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Created 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Starting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Started 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Healthy 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Starting 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Started 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Healthy 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Healthy 
+{
+  "evaluation_id": "c24268db-7683-417f-ade0-9ae45bf804af",
+  "year": 2026,
+  "members": 10,
+  "projects": 6,
+  "results": 30,
+  "evidence": 59,
+  "warnings": 1,
+  "mode": "synthetic LLM",
+  "adjustment": {
+    "original_quality": 76,
+    "adjusted_quality": 94,
+    "before_overall": 72.27,
+    "after_overall": 74.89
+  }
+}
+Browser workflow passed; screenshots and report saved to artifacts/.
+ Container trace-check-f6ef4d9ee9-fixtures-1 Recreate 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Recreated 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Recreate 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Recreated 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Starting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Started 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Healthy 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Starting 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Started 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Waiting 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Healthy 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Healthy 
+백업 완료: /data/verification.sqlite3
+ trace-check-f6ef4d9ee9-dashboard-1 Copying trace-check-f6ef4d9ee9-dashboard-1:/data/verification.sqlite3 to /tmp/trace-verification-eue1htk0/review.sqlite3
+ trace-check-f6ef4d9ee9-dashboard-1 Copied trace-check-f6ef4d9ee9-dashboard-1:/data/verification.sqlite3 to /tmp/trace-verification-eue1htk0/review.sqlite3
+ trace-check-f6ef4d9ee9-dashboard-1 Copying trace-check-f6ef4d9ee9-dashboard-1:/data/review-settings.json to /tmp/trace-verification-eue1htk0/review-settings.json
+ trace-check-f6ef4d9ee9-dashboard-1 Copied trace-check-f6ef4d9ee9-dashboard-1:/data/review-settings.json to /tmp/trace-verification-eue1htk0/review-settings.json
+trace-restore-f6ef4d9ee9_review-data
+time="2026-09-27T17:59:03+09:00" level=warning msg="volume \"trace-restore-f6ef4d9ee9_review-data\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Creating 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Created 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Starting 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Started 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Waiting 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Healthy 
+Docker evaluation, persistence, backup/restore and production-mode checks passed.
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Stopping 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Stopped 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Removing 
+ Container trace-restore-f6ef4d9ee9-dashboard-1 Removed 
+ Volume trace-restore-f6ef4d9ee9_review-data Removing 
+ Volume trace-restore-f6ef4d9ee9_review-data Removed 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Stopping 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Stopped 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Removing 
+ Container trace-check-f6ef4d9ee9-dashboard-1 Removed 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Stopping 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Stopped 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Removing 
+ Container trace-check-f6ef4d9ee9-fixtures-1 Removed 
+ Volume trace-check-f6ef4d9ee9_demo-data Removing 
+ Network trace-check-f6ef4d9ee9_default Removing 
+ Volume trace-check-f6ef4d9ee9_demo-data Removed 
+ Network trace-check-f6ef4d9ee9_default Removed 
+Untagged: trace-team-review:verify-f6ef4d9ee9
+Deleted: sha256:502827262560dad9bc842697335b9305c32c0ec8dd09aef951f40dadcb09d041

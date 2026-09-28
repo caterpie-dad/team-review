@@ -1,0 +1,47 @@
+[app]
+demo = true
+[auth]
+password = "env:DASHBOARD_PASSWORD"
+session_hours = 8
+secure_cookie = false
+[storage]
+path = "/data/review.sqlite3"
+[github]
+web_url = "https://github.demo.test"
+api_url = "http://fixtures:9001/github"
+token = ""
+[confluence]
+web_url = "https://confluence.demo.test/wiki"
+api_url = "http://fixtures:9001/confluence"
+token = ""
+[llm]
+api_url = "http://fixtures:9001/llm"
+key = ""
+model = "synthetic-judge-v1"
+json_mode = true
+[limits]
+request_timeout = 10
+llm_timeout = 30
+max_pages = 500
+max_versions = 200
+max_commits = 1000
+max_repos = 100
+max_api_pages = 100
+max_chars = 16000
+llm_batch_chars = 32000
+
+[evaluation]
+# 종합점수 = 프로젝트 가중평균 × CL 계수. 평가 시작 시 보존합니다.
+level_weights = { CL2 = 1.0, CL3 = 0.9, CL4 = 0.8 }
+
+[analysis]
+# adaptive: 검증된 동일 작성자 연속 구간의 최종 파일 + 순변경 + 중간 변경을 통합
+# diff: 기존 커밋별 diff 분석. 원본 근거는 두 모드 모두 보존합니다.
+github_strategy = "adaptive"
+min_consecutive_commits = 4
+max_consecutive_commits = 32
+min_savings_ratio = 0.2
+max_snapshot_bytes = 128000
+max_snapshot_files = 20
+cache_enabled = true
+cache_max_entries = 2000

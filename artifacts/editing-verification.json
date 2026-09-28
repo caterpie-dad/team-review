@@ -1,0 +1,20 @@
+{
+  "browser": "134.0.6998.35",
+  "page_errors": [],
+  "mode": "synthetic HTTP services",
+  "checks": [
+    "completed evaluation edit",
+    "participants add/remove",
+    "weights recalculate",
+    "incremental reanalysis",
+    "full reanalysis preserving reviewer scores and text",
+    "manual correction retained",
+    "review text editing",
+    "finalized evaluation edit",
+    "rubric contents and ratios",
+    "global rubric explicit application",
+    "three integration connection tests",
+    "masked secret persistence",
+    "mobile layout"
+  ]
+}
